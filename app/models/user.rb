@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include ActiveModel::Serializers::JSON
+  
   has_secure_password
 
   belongs_to :location
@@ -14,5 +16,9 @@ class User < ApplicationRecord
   has_many :liked_comments, through: :comment_likes, source: :comment
 
   has_one_attached :avatar
+
+  def avatar_url
+    Rails.application.routes.url_helpers.url_for(avatar) if avatar.attached?
+  end
 
 end

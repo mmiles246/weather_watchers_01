@@ -22,7 +22,7 @@ puts "Seeding New Data......."
 puts "Seeding Locations......"
 
 loc1=Location.create(
-    place_id : "ChIJkcxLDJ8uwokR8HKvyNgi7ZQ",
+    place_id: "ChIJkcxLDJ8uwokR8HKvyNgi7ZQ",
     name: "Asbury Park, NJ 07712, USA"
 )
 

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include ActiveModel::Serializers::JSON
   belongs_to :user
   belongs_to :location
 
@@ -9,4 +10,9 @@ class Post < ApplicationRecord
   has_many :users_that_commented, through: :comments, source: :user
   
   has_one_attached :image
+
+  def image_url
+    Rails.application.routes.url_helpers.url_for(image) if image.attached?
+  end
+
 end

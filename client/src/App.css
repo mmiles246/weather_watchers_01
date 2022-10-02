@@ -1,38 +1,479 @@
 .App {
   text-align: center;
 }
+/* ////////////////////////////////////////////////////////*/
+/* NavBar Styling */
+/* ////////////////////////////////////////////////////////*/
+/* .nav--primary {
+  height: 160px;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-container {
+  /* background-color: #F1F2EE; */
+  background-color: ;
+  height: 60px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  position: fixed;
+  justify-content: start;
+  align-items: center;
+  z-index: 2;
+}
+
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+  list-style: none;
+}
+
+.nav-menu {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  margin-top: 25px;
+  transition: 850ms;
+}
+
+.nav-menu-active {
+  width: 250px;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  top: 0;
+  position: fixed;
+  right: 0;
+  transition: 350ms;
+  background-color: #F1F2EE;
+  z-index: 1;
+  overflow: scroll;
+}
+
+.nav-text{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0 8px 16px;
+  list-style: none;
+  height: 60px;
+  right: 0;
+}
+
+.nav-text a{
+  text-decoration: none;
+  font-size: 20px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.nav-text a:hover {
+  background-color: #1a83ff;
+}
+
+.nav-text-signup{
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  padding: 8px 0 8px 16px;
+  list-style: none;
+  height: 60px;
+  /* right: 0; */
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.nav-text-signup a{
+  text-decoration: none;
+  font-size: 20px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.nav-text-post {
+  text-decoration: none;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 4px;
+  
+}
+
+.nav-text-signup a:hover {
+  background-color: #1a83ff;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.navbar-toggle {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.account-widget {
+  display: flex;
+  right: 110px;
+  position: fixed;
+}
+
+
+.nav-logo {
+    
+}
+
+.nav-icon {
+  display: flex;
+  right: 40px;
+  position: fixed;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* Home Styling */
+/* ////////////////////////////////////////////////////////*/
+
+.home--primary {
+
+}
+
+.header-banner {
+  align-items: center;
+
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* HomeBanner */
+/* ////////////////////////////////////////////////////////*/
+.home-banner {
+  background-color: #0F110C;
+  background-image: url('./components/imgs/mangrove.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 360px;
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
+  display: flex;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* CurrentConditionsWidget */
+/* ////////////////////////////////////////////////////////*/
+
+.temp-widget-container {
+  color: #F1F2EE;
+  width: 25%;
+  height: 160px;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #67AAF9;
+  margin: 30px 200px 30px 60px;
+  overflow: scroll;
+}
+
+.temp-widget-container::-webkit-scrollbar {
+  display: none;
+}
+
+.toggle {
+  margin-bottom: 10px;
+  
+}
+
+.temp-widget-deets {
+  align-items: center;
+}
+
+/* .temp-widget {
+  align-items: center;
+} */
+
+
+.local-temp {
+  font-size: 45px;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* WidgetToggle */
+/* ////////////////////////////////////////////////////////*/
+/* 
+.toggle-switch{
+  display: flex;
+  position: relative;
+} */
+
+/* ////////////////////////////////////////////////////////*/
+/* HourlyForcastWidget */
+/* ////////////////////////////////////////////////////////*/
+
+.hourly-forcast-widget {
+  color: #F1F2EE;
+  width: 25%;
+  height: 160px;
+  vertical-align: middle;
+  display: flex;
+  background-color: #67AAF9;
+  margin: 30px 200px 30px 60px;
+  overflow-x: scroll;
+  justify-content: center;
+}
+
+.hourly-forcast-widget::-webkit-scrollbar {
+  display: none;
+}
+
+.hourly-forcast-card {
+  width: 100%;
+}
+
+.hour-forcast{
+  border: 1px solid;
+  justify-content: space-between;
+  padding: 0px;
+  margin: 0;
+}
+
+
+
+/* ////////////////////////////////////////////////////////*/
+/* EventsWidget */
+/* ////////////////////////////////////////////////////////*/
+
+.events-widget {
+  color: #F1F2EE;
+  width: 33%;
+  height: 160px;
+  display: flex;
+  float: right;
+  background-color: #698F3F;
+  position: relative;
+}
+/* ////////////////////////////////////////////////////////*/
+/* SearchBar */
+/* ////////////////////////////////////////////////////////*/
+
+.search--primary {
+
+}
+
+.search-input {
+  display: flex;
+}
+
+.search-icon {
+  border: solid 1px;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* Signup */
+/* ////////////////////////////////////////////////////////*/
+
+.signup-page {
+  /* background-image: url("./imgs/carosel.jpg"); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+}
+
+.signup-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  top: 50%;
+
+}
+
+.signup-form {
+  align-items: center;
+  align-content: center;
+  border: #282c34;
+  border-style: double;
+  border-spacing: 5px;
+  display: inline-block;
+
+}
+
+.login-link{
+
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* Login */
+/* ////////////////////////////////////////////////////////*/
+
+.login-page {
+  display: flex;
+}
+
+.login-container {
+  margin: 100px;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* CurrentUserFeedPage */
+/* ////////////////////////////////////////////////////////*/
+
+.feed-container {
+  height: 100vh;
+  /* background-color: #EFF9F0; */
+  /* background-color: #698F3F; */
+  background-color: #CFEBDF;
+  width: 100%;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.current-user-avatar {
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.current-user-blank-avatar {
+  height: 30px;
+  width: auto;
+  padding-right: 15px;
+}
+
+.feed-header {
+  width: 100%;
+  height: 25vh;
+  /* margin: 20px 0 80px 0; */
+  padding: 110px 0 0 55px;
+  display: flex;
+  align-items: center;
+}
+
+.image-feed{
+  flex: 1 1 auto;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* HomePageFeed */
+/* ////////////////////////////////////////////////////////*/
+
+.home-feed-container {
+  height: 100vh;
+  /* background-color: #EFF9F0; */
+  /* background-color: #698F3F; */
+  background-color: #CFEBDF;
+  width: 100%;
+  text-align: center;
+}
+
+.home-feed-header {
+  width: 100%;
+  /* margin: 20px 0 80px 0; */
+  padding: 20px 0 80px 0;  
+ }
+
+ .home-image-feed{
+  flex: 1 1 auto;
+}
+
+
+/* ////////////////////////////////////////////////////////*/
+/* User Account Page */
+/* ////////////////////////////////////////////////////////*/
+
+.current-user-feed-image {
+  width: 250px;
+  height: auto;
+  /* display: block; */
+  /* align-self: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  align-content: center;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.image-container {
+  height: 250px;
+  width: 250px;
+  background-color: #0F110C;
+  margin: 10px;
+  display: inline-flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* User Banner */
+/* ////////////////////////////////////////////////////////*/
+
+.user-banner-container {
+  display: flex;
+}
+
+.user-banner {
+
+}
+
+.user-banner-avatar {
+
+}
+
+.user-banner-username {
+
+}
+
+
+/* ////////////////////////////////////////////////////////*/
+/* Image Page */
+/* ////////////////////////////////////////////////////////*/
+
+.image-page {
+  width: 100%;
+  height: 100vh;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.image-page-container {
+  display: flex;
+  width: 550px;
+  height:550px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image-page-image {
+  height: 300px;
+  /* align-items: center; */
+  /* align-content: center; */
+  /* justify-items: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }

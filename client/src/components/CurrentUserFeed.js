@@ -47,13 +47,12 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
                 isMounted.current = false
             }
         }, [clickedImageId])
-            
+    
     
     
 
     function imageObjsMapper (obj) {
         return(
-            
         <div className='image-container'>
             <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
         </div>)

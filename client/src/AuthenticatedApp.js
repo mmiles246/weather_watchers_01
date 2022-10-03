@@ -21,6 +21,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
         fetch('/my_posts')
         .then((res) => res.json())
         .then(res => {
+            console.log(res)
             setImageObjs(res)
         })
     }, [currentUser])

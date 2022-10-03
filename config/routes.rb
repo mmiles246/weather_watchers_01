@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/me', to:'application#show'
-  post '/login', to: 'sessions#create'
+  post '/login', to: 'session#create'
   post '/create_post', to: 'posts#create'
   post '/add_location', to: 'locations#create'
   post '/new_user', to: 'users#create'
 
-  post '/like-image/:id', to: 'likes#like_image'
+  post '/like-image/:id', to: 'post_likes#like_image'
 
   patch '/update_user/:id', to: 'users#avatar_upload'
   
@@ -30,6 +30,6 @@ Rails.application.routes.draw do
   get '/location', to: 'locations#place_id'
   get '/locations-placeids', to: 'locations#place_id'
   get 'locations-images', to: 'locations#images'
-  delete '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'session#destroy'
   
 end

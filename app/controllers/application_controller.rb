@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
 
     def show
         if current_user
+            byebug
             render json: UserSerializer.new(@current_user).serializable_hash[:data][:attributes]
         else
             render json: {}, status: :unauthorized

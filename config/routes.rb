@@ -31,5 +31,11 @@ Rails.application.routes.draw do
   get '/locations-placeids', to: 'locations#place_id'
   get 'locations-images', to: 'locations#images'
   delete '/logout', to: 'session#destroy'
+
+
+
+  get '*path',
+      to: 'fallback#index',
+      constraints: ->(req) { !req.xhr? && req.format.html? }
   
 end

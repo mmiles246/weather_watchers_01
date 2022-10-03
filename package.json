@@ -1,7 +1,6 @@
 {
     "name": "example-project",
     "description": "Build scripts for Heroku",
-    "proxy": "http://localhost:3000",
     "engines": {
       "node": ">= 14"
     },

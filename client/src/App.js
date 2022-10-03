@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {BrowserRouter, useOutletContext} from 'react-router-dom'
 import AuthenticatedApp from './AuthenticatedApp';
 import UnauthenticatedApp from './UnauthenticateApp';
@@ -21,13 +21,14 @@ function App() {
   const [locate, setLocate] = useState(false)
   const [placeId, setPlaceId] = useState('')
   const [storedLocations, setStoredLocations] = useState([])
+  const [currentLocationInfo, setCurrentLocationInfo]=useState([])
 
   // const [clickedImageUrl, setClickedImageUrl] = useState()
   // const [clickedImageId, setClickedImageId] = useState()
   // const [clickedImage, setClickedImage] = useState()
   // const [imageObjs, setImageObjs] = useState([])
 
-  // const isMounted = useRef(false)
+  const isMounted = useRef(false)
 
   useEffect(() => {
     fetch('/me')
@@ -94,6 +95,18 @@ function App() {
           setIconNum(res[0].WeatherIcon)
         })
       }, [lat, lng])
+
+      useEffect(() => {
+        fetch(`/location-placeId/${placeId}`)
+        .then(res => {
+            if (res.ok) {
+                res.json().then(data => {
+                    console.log(data)
+                    setCurrentLocationInfo(data)
+                })
+            }
+        })
+    }, [placeId])
   
   return (
     <BrowserRouter>
@@ -112,7 +125,9 @@ function App() {
       iconNum={iconNum}
       placeId={placeId}
       setPlaceId={setPlaceId}
-      storedLocations={storedLocations} /> 
+      storedLocations={storedLocations}
+      isMounted={isMounted}
+      currentLocationInfo={currentLocationInfo} /> 
       : 
       <UnauthenticatedApp
       currentUser={currentUser}
@@ -129,6 +144,8 @@ function App() {
       placeId={placeId}
       setPlaceId={setPlaceId}
       storedLocations={storedLocations}
+      isMounted={isMounted}
+      currentLocationInfo={currentLocationInfo}
       />
     }
     </BrowserRouter>

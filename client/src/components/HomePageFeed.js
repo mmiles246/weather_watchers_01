@@ -2,17 +2,17 @@ import {useState, useEffect, useRef} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
-function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted}) {
-    const [currentLocationInfo, setCurrentLocationInfo]=useState([])
+function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted, currentLocationInfo}) {
+    // const [currentLocationInfo, setCurrentLocationInfo]=useState([])
 
     // const isMounted = useRef(false)
 
     let navigate = useNavigate()
 
-    console.log(currentLocationInfo)
+    // console.log(currentLocationInfo)
 
     // useEffect(() => {
-    //     fetch(`location-placeId/${placeId}`)
+    //     fetch(`/location-placeId/${placeId}`)
     //     .then(res => {
     //         if (res.ok) {
     //             res.json().then(data => {
@@ -23,14 +23,14 @@ function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, 
     //     })
     // }, [placeId])
 
-    // useEffect(() => {
-    //     if (isMounted.current) {
-    //         navigate(`/image/${clickedImageId}`, {state: clickedImageId})
-    //         isMounted.current = false
-    //     } else {
-    //         isMounted.current = false
-    //     }
-    // }, [clickedImageId])
+    useEffect(() => {
+        if (isMounted.current) {
+            navigate(`/image/${clickedImageId}`, {state: clickedImageId})
+            isMounted.current = false
+        } else {
+            isMounted.current = false
+        }
+    }, [clickedImageId])
 
     // function imageClick (e) {
     //     setClickedImageId(parseInt(e.target.getAttribute('imageId')))
@@ -58,11 +58,10 @@ function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, 
                 <h2>{userLocationName}  </h2>    
             </div>
             <div className='home-image-feed'>
-                Images will be here
                 {/* if(currententLocationInfo) {
                 currentLocationInfo.map(imageObjsMapper)
                 } else {} */}
-                {currentLocationInfo.map(imageMapper)}
+                {currentLocationInfo ? currentLocationInfo.map(imageMapper) : ''}
                 
             </div>
         </div>

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get '/my_posts', to: 'posts#current_user_posts'
   get '/location', to: 'locations#place_id'
   get '/locations-placeids', to: 'locations#place_id'
-  get 'locations-images', to: 'locations#images'
+  get '/locations-images', to: 'locations#images'
   delete '/logout', to: 'session#destroy'
 
 

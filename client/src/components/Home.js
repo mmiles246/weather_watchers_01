@@ -3,8 +3,9 @@ import HomePageBanner from "./HomePageBanner";
 import HomePageFeed from "./HomePageFeed";
 
 
-function Home ({userLocationKey, userLocationName, userState, currentConditions, triggerLocation, locate, iconNum, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted}) {
+function Home ({userLocationKey, userLocationName, userState, currentConditions, triggerLocation, locate, iconNum, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted, currentLocationInfo}) {
 
+    console.log(placeId)
     return (
         <>
             <div className="home--primary">
@@ -30,7 +31,8 @@ function Home ({userLocationKey, userLocationName, userState, currentConditions,
                         clickedImage={clickedImage} 
                         setClickedImage={setClickedImage} 
                         imageClick={imageClick} 
-                        isMounted={isMounted} 
+                        isMounted={isMounted}
+                        currentLocationInfo={currentLocationInfo} 
                         />
                 </div>
             </div>

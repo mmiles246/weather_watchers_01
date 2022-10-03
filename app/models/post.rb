@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   include ActiveModel::Serializers::JSON
+  
   belongs_to :user
   belongs_to :location
 

@@ -9,13 +9,14 @@ import UserAccountPage from "./components/UserAccountPage";
 import PostModal from "./components/PostModal";
 import ImagePage from "./components/ImagePage";
 
-function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations}) {
+function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo}) {
     const [clickedImageUrl, setClickedImageUrl] = useState()
     const [clickedImageId, setClickedImageId] = useState()
     const [clickedImage, setClickedImage] = useState()
     const [imageObjs, setImageObjs] = useState([])
+    // const [currentLocationInfo, setCurrentLocationInfo]=useState([])
 
-    const isMounted = useRef(false)
+    // const isMounted = useRef(false)
 
     useEffect(() => {
         fetch('/my_posts')
@@ -26,9 +27,22 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
         })
     }, [currentUser])
 
+    // useEffect(() => {
+    //     fetch(`/location-placeId/${placeId}`)
+    //     .then(res => {
+    //         if (res.ok) {
+    //             res.json().then(data => {
+    //                 console.log(data)
+    //                 setCurrentLocationInfo(data)
+    //             })
+    //         }
+    //     })
+    // }, [placeId])
+
     function imageClick (e) {
         setClickedImageId(parseInt(e.target.getAttribute('imageId')))
         setClickedImageUrl(e.target.getAttribute('src'))
+        
         setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
         isMounted.current = true
     }
@@ -58,6 +72,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
                     imageClick={imageClick} 
                     isMounted={isMounted}
                     imageObjs={imageObjs}
+                    currentLocationInfo={currentLocationInfo}
                     />
                 } />
                 <Route path='signup' element={<Signup />} />

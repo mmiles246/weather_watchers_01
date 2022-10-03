@@ -37,7 +37,6 @@ class PostsController < ApplicationController
 
     def current_location_posts
         @current_location=Location.find_by(place_id: params[:place_id])
-        # byebug
         @loc_posts=@current_location.posts
         @loc_posts_urls=Array.new
         @loc_posts.each do |post|

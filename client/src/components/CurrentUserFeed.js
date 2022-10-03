@@ -20,8 +20,6 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
 
     let navigate = useNavigate()
 
-    console.log(currentUser)
-
 
     // useEffect(() => {
     //     fetch('/my_posts')

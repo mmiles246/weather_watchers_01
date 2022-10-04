@@ -84,7 +84,7 @@ function App() {
       .then((res) => {
         // console.log(res)
         setUserLocationKey(res.Key)
-        setUserLocatioName(res.EnglishName)            //api requests timed out for the day, necessary notation TBD.
+        setUserLocatioName(res.EnglishName)            
         setUserState(res.AdministrativeArea.ID)
         return fetch(`http://dataservice.accuweather.com/currentconditions/v1/${res.Key}?apikey=OsURg1PXKrkIswSEQHCGvY7yHyTJpVkP`)  
         })
@@ -97,7 +97,7 @@ function App() {
       }, [lat, lng])
 
       useEffect(() => {
-        fetch(`/location-placeId/${placeId}`)
+        fetch(`/location-images/${placeId}`)
         .then(res => {
             if (res.ok) {
                 res.json().then(data => {
@@ -144,6 +144,7 @@ function App() {
       placeId={placeId}
       setPlaceId={setPlaceId}
       storedLocations={storedLocations}
+      setStoredLocations={setStoredLocations}
       isMounted={isMounted}
       currentLocationInfo={currentLocationInfo}
       />

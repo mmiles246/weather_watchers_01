@@ -16,4 +16,5 @@ class Post < ApplicationRecord
     Rails.application.routes.url_helpers.url_for(image) if image.attached?
   end
 
+
 end

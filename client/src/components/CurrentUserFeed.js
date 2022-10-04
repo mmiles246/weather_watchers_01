@@ -44,7 +44,7 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
             } else {
                 isMounted.current = false
             }
-        }, [clickedImageId])
+        }, [imageClick])
     
     
     
@@ -79,7 +79,7 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
         <div className='feed-container'>
             <div className='feed-header'>
                 <div className='current-user-avatar'>
-                    {!currentUser.avatar ? " " : <img className='current-user-blank-avatar' src={currentUser.avatar_url} onClick={() => setShow(true)}/>}
+                    {!currentUser.avatar ? <i class="fa-solid fa-user"></i> : <img className='current-user-blank-avatar' src={currentUser.avatar_url} onClick={() => setShow(true)}/>}
                     {/* <img className={currentUser.avatar ? '' : ''}/> */}
                 </div>
                 <div className='current-user'>

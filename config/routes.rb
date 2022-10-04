@@ -20,16 +20,16 @@ Rails.application.routes.draw do
 
   patch '/update_user/:id', to: 'users#avatar_upload'
   
-  get '/location-placeId/:place_id', to: 'posts#current_location_posts'
+  get '/location-images/:place_id', to: 'posts#current_location_posts'
   get '/dummy-route', to: 'posts#index'
 
   get '/clicked_image/:id', to: 'posts#show'
   get '/posts_latest', to: 'posts#latest'
   get '/posts_show', to: 'posts#show'
   get '/my_posts', to: 'posts#current_user_posts'
-  get '/location', to: 'locations#place_id'
+  get '/locations', to: 'locations#place_id'
   get '/locations-placeids', to: 'locations#place_id'
-  get '/locations-images', to: 'locations#images'
+  # get '/locations-images', to: 'locations#images'
   delete '/logout', to: 'session#destroy'
 
 

@@ -4,7 +4,7 @@ import Geocode from "react-geocode"
 // import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import Autocomplete from "react-google-autocomplete";
 
-function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLocations}) {
+function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLocations, setStoredLocations}) {
     const [postalCode, setPostalCode] = useState('')
     const [autocompleteAddress, setAutocompleteAddress] = useState('')
     const [value, setValue] =useState(null)

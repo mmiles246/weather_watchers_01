@@ -5,11 +5,11 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 
 
-function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo}) {
+function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setStoredLocations}) {
 
     return(
         <>
-        <NavBar setLat={setLat} setLng={setLng} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} />
+        <NavBar setLat={setLat} setLng={setLng} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} setStoredLocations={setStoredLocations} />
             <Routes>
                 <Route path='/' element={
                     <Home 
@@ -25,7 +25,7 @@ function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, user
                     currentLocationInfo={currentLocationInfo}
                     />
                 } />
-                <Route path='signup' element={<Signup />} />
+                <Route path='signup' element={<Signup storedLocations={storedLocations} setStoredLocations={setStoredLocations}/>} />
                 <Route path='login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
                 {/* </Route> */}
             </Routes>

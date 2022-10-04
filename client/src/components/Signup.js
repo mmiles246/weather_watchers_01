@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import NavBar from './Navbar';
 import Autocomplete from "react-google-autocomplete";
 
-function Signup () { 
+function Signup ({storedLocations, setStoredLocations}) { 
     const [newUserLocationId, setNewUserLocationId] = useState()
     const [newUserFormattedAddress, setNewUserFotmattedAddress] = useState()
-    const [storedLocations, setStoredLocations] = useState([])
+    // const [storedLocations, setStoredLocations] = useState([])
     const [triggerFetch, setTriggerFetch] =useState(false)
     const [signupInfo, setSignUpInfo] = useState({
         username: "",
@@ -14,6 +14,8 @@ function Signup () {
         password: "",
         location_id: null, 
     })
+
+    let navigate = useNavigate()
 
     useEffect(() => {
         fetch('/locations')
@@ -37,6 +39,7 @@ function Signup () {
 
     function addLocation (storedLocations) {
         let found = storedLocations.some(obj => obj.place_id === newUserLocationId)
+        console.log(found)
         if(!found) {
             fetch('/add_location', {
                 method: 'POST',
@@ -69,23 +72,7 @@ function Signup () {
     function handleSubmit (e) {
         e.preventDefault() 
         addLocation(storedLocations)
-        // onSubmit(e)
-        
-        // fetch('/new_user', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         username: signupInfo.username,
-        //         email: signupInfo.email,
-        //         password: signupInfo.password,
-        //         location_id: signupInfo.location_id,
-        //     })
-        // })
-
-                
-
+        onSubmit()
     }
     
     function onSubmit () {
@@ -104,29 +91,11 @@ function Signup () {
 
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            navigate(-1)
+            console.log(data)})
     }
 
-    // for(let i=0; i<storedLocations.length; i++) {
-    //     if(storedLocations[i].place_id === newUserLocationId) {
-    //         signupInfo.location = storedLocations[i].id
-    //         break;
-    //     } else {
-    //         fetch('/new_location', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: {
-    //                 place_id: newUserLocationId,
-    //                 zipcode: ,
-    //                 name: '', 
-    //             }
-    //         })
-    //         .then()
-    //         .then()
-    //     }
-    // }
 
     return (
         <>

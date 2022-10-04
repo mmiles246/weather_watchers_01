@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import {useState, useEffect, useRef} from 'react'
 import Home from "./components/Home";
 import NavBar from "./components/Navbar";
@@ -17,6 +17,8 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
     // const [currentLocationInfo, setCurrentLocationInfo]=useState([])
 
     // const isMounted = useRef(false)
+
+    let navigate = useNavigate()
 
     useEffect(() => {
         fetch('/my_posts')
@@ -42,7 +44,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
     function imageClick (e) {
         setClickedImageId(parseInt(e.target.getAttribute('imageId')))
         setClickedImageUrl(e.target.getAttribute('src'))
-        
+        // navigate(`/image/${clickedImageId}`, {state: clickedImageId})
         setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
         isMounted.current = true
     }

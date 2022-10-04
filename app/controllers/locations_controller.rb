@@ -15,14 +15,14 @@ class LocationsController < ApplicationController
         place_ids = []
         @locations = Location.all
         @locations.each do |location|
-            place_ids << location.place_id
+            place_ids.push(location.place_id)
         end
         render json: place_ids
     end
 
     def location_images
         @current_location=Location.find_by(place_id: params[:place_id]) 
-        # byebug
+        byebug
         render json: LocationSerializer.new(@current_location).serializable_hash[:data][:attributes]
     end
 

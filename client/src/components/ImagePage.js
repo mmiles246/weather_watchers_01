@@ -4,6 +4,7 @@ import UserBanner from "./UserBanner";
 
 function ImagePage ({currentUser}) {
     const [image, setImage]=useState({})
+    const [userWhoPosted, setUserWhoPosted] = useState('')
     let location = useLocation();
 
     console.log(location.state)
@@ -15,6 +16,7 @@ function ImagePage ({currentUser}) {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            setUserWhoPosted(data.user)
             setImage(data)
         })
     }, [])
@@ -29,7 +31,6 @@ function ImagePage ({currentUser}) {
             body: JSON.stringify({
                 user_id: currentUser.id,
                 post_id: image.id,
-                comment_id: 1
             })
         }
         )
@@ -39,12 +40,13 @@ function ImagePage ({currentUser}) {
 
     return(
         <>
-        {/* <UserBanner user={userWhoPosted} /> */}
         <div className='image-page'>
             
-            <div className='image-page-container'>
-                <img className='image-page-image' src={image.image_url} id={image.id} onClick={clickToLike} />
-            </div>
+                <div className='image-page-container'>
+                    <UserBanner userWhoPosted={userWhoPosted} />
+                    <img className='image-page-image' src={image.image_url} id={image.id} onClick={clickToLike} />
+                </div>
+          
         </div>
         </>
     )

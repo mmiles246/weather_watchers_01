@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     
     def create
         @current_user=User.create(user_params)
-        byebug
         if @current_user.valid?
             session[:user_id]=@current_user.id
             render json: @current_user, status: :created

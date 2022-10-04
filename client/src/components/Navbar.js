@@ -6,7 +6,7 @@ import {AuthNavbarData} from './AuthNavbarData';
 
 
 
-function NavBar ({setLat, setLng, currentUser, setCurrentUser, placeId, setPlaceId, storedLocations}) {
+function NavBar ({setLat, setLng, currentUser, setCurrentUser, placeId, setPlaceId, storedLocations, setStoredLocations}) {
     const [clicked, setClicked] = useState(false)
 
     function showNavBar () {
@@ -32,7 +32,7 @@ function NavBar ({setLat, setLng, currentUser, setCurrentUser, placeId, setPlace
             <Link to='/' className='nav-logo'>
                 Weather Watchers <i class="fa-solid fa-2x fa-cloud"></i>
             </Link>
-            <SearchBar placeholder='search by zipcode' setLat={setLat} setLng={setLng} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} />
+            <SearchBar placeholder='search by zipcode' setLat={setLat} setLng={setLng} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} setStoredLocations={setStoredLocations} />
             {currentUser ? 
             <div className='account-widget'>
                 <Link to='/my-account'>

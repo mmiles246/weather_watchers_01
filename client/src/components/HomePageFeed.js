@@ -30,7 +30,7 @@ function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, 
         } else {
             isMounted.current = false
         }
-    }, [clickedImageId])
+    }, [imageClick])
 
     // function imageClick (e) {
     //     setClickedImageId(parseInt(e.target.getAttribute('imageId')))

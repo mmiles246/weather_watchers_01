@@ -41,6 +41,7 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
             if (isMounted.current) {
                 navigate(`/image/${clickedImageId}`, {state: clickedImageId})
                 isMounted.current = false
+                setClickedImage(null)
             } else {
                 isMounted.current = false
             }
@@ -79,7 +80,7 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
         <div className='feed-container'>
             <div className='feed-header'>
                 <div className='current-user-avatar'>
-                    {!currentUser.avatar ? <i class="fa-solid fa-user"></i> : <img className='current-user-blank-avatar' src={currentUser.avatar_url} onClick={() => setShow(true)}/>}
+                    {!currentUser.avatar_url ? <i class="fa-solid fa-user" onClick={() => setShow(true)}></i> : <img className='current-user-blank-avatar' src={currentUser.avatar_url} onClick={() => setShow(true)}/>}
                     {/* <img className={currentUser.avatar ? '' : ''}/> */}
                 </div>
                 <div className='current-user'>
@@ -93,7 +94,7 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
                 aria-labelledby="example-modal-sizes-title-sm"
             >
                 <Modal.Header closeButton>
-                {currentUser.avatar ? <Modal.Title id="example-modal-sizes-title-sm">Add a profile image?</Modal.Title> : <Modal.Title id="example-modal-sizes-title-sm">Update profile image?</Modal.Title> }
+                {!currentUser.avatar_url ? <Modal.Title id="example-modal-sizes-title-sm">Add a profile image?</Modal.Title> : <Modal.Title id="example-modal-sizes-title-sm">Update profile image?</Modal.Title> }
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={onSubmit}>

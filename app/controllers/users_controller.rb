@@ -24,6 +24,16 @@ class UsersController < ApplicationController
         end
     end
 
+    def find_user
+        @user=User.find_by(id: params[:id])
+        if @user
+            render json: UserSerializer.new(@user).serializable_hash[:data][:attributes]
+        else 
+            render json: {errors: @user.errors.full_messages}
+        end
+        # byebug
+    end
+
     def avatar_upload
         @current_user=User.find_by(id: session[:user_id])
         @current_user.update(user_params)

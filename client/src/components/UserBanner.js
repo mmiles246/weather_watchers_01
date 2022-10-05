@@ -1,11 +1,11 @@
-function UserBanner ({userWhoPosted}) {
-    console.log(userWhoPosted)
+function UserBanner ({userWhoPosted, userWhoPostedAvatar}) {
+    console.log(userWhoPostedAvatar)
     return(
         <>
         <div className='user-banner-container'>
             <div className='user-banner'>
                 <div className='user-banner-avatar'>
-                    <img src={userWhoPosted.avatar_url}/>
+                    <img src={userWhoPostedAvatar}/>
                 </div>
                 <div className='user-banner-username'>
                     <h3>{userWhoPosted.username}</h3>

@@ -27,9 +27,11 @@ function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, 
         if (isMounted.current) {
             navigate(`/image/${clickedImageId}`, {state: clickedImageId})
             isMounted.current = false
-        } else {
-            isMounted.current = false
-        }
+            setClickedImageId(null)
+        } 
+        // else {
+        //     isMounted.current = false
+        // }
     }, [imageClick])
 
     // function imageClick (e) {

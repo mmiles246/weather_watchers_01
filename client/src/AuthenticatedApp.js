@@ -44,7 +44,6 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
     function imageClick (e) {
         setClickedImageId(parseInt(e.target.getAttribute('imageId')))
         setClickedImageUrl(e.target.getAttribute('src'))
-        // navigate(`/image/${clickedImageId}`, {state: clickedImageId})
         setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
         isMounted.current = true
     }

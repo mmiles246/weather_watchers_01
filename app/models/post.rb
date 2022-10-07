@@ -24,5 +24,14 @@ class Post < ApplicationRecord
     user_ids
   end
 
+  # def comment_content
+  #   comment_content=Array.new
+  #   comments.each do |comment|
+  #     comment={comment.user.username: comment.content}
+  #     comment_content << comment
+  #   end
+  #   comment_content
+  # end
+
 
 end

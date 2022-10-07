@@ -1,20 +1,28 @@
 class PostLikesController < ApplicationController
 
-    def create
-        @like=PostLike.new(like_params)
+
+    def index
+        post_likes=PostLike.all
+        render json: post_likes
+    end
+
+    def like_image
         byebug
-        if @like.save
-            render json: @like, status: :created
-        else
-            render json: @like.errors, status: :unprocessable_entity
-        end        
+        post_like=PostLike.create(post_like_params)
+        byebug
+        # if post_like.save
+        #     render json: post_like, status: :created
+        # else
+        #     render json: post_like.errors, status: :unprocessable_entity
+        # end 
+        render json: post_like       
     end
 
 
 
     private 
 
-    def like_params
+    def post_like_params
         params.permit(:id, :post_id, :user_id)
     end
 

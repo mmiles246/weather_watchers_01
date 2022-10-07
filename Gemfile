@@ -49,6 +49,6 @@ group :development do
 end
 
 
-gem "active_model_serializers", "~> 0.10.13"
+gem "active_model_serializers", "~> 0.10.12"
 
 gem 'jsonapi-serializer'

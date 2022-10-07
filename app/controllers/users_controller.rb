@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
     
     def create
-        @current_user=User.create(user_params)
+        @current_user=User.create!(user_params)
         if @current_user.valid?
             session[:user_id]=@current_user.id
             render json: @current_user, status: :created

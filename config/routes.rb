@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/add_location', to: 'locations#create'
   post '/new_user', to: 'users#create'
 
-  post '/like-image/:id', to: 'post_likes#like_image'
+  post '/like-image/:id', to: 'post_likes#create'
 
   patch '/update_user/:id', to: 'users#avatar_upload'
   

@@ -1,5 +1,4 @@
 function UserBanner ({userWhoPosted, userWhoPostedAvatar}) {
-    console.log(userWhoPostedAvatar)
     return(
         <>
         <div className='user-banner-container'>

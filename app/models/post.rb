@@ -16,5 +16,13 @@ class Post < ApplicationRecord
     Rails.application.routes.url_helpers.url_for(image) if image.attached?
   end
 
+  def users_who_liked
+    user_ids=Array.new
+    users_that_liked.each do |user|
+        user_ids.push(user.id)
+    end
+    user_ids
+  end
+
 
 end

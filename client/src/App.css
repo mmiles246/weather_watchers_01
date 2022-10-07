@@ -429,17 +429,18 @@
 /* ////////////////////////////////////////////////////////*/
 
 .user-banner-container {
-  height: 80px;
+  height: 8vh;
   width: 100%;
   background-color: #00FFFFFF;
   position: absolute;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   z-index: 1;
   align-items: center;
   justify-content: center;
   align-content: center;
   /* padding-top: 400px; */
   overflow: hidden;
+  /* display: flex; */
 }
 
 .user-banner {
@@ -450,7 +451,7 @@
 
 .user-banner-avatar {
   display: flex;
-  height: 60px;
+  height: 5.5vh;
   float: left;
   margin: 2% 2% 2% 2%;
   position: relative;
@@ -463,7 +464,7 @@
   align-items: center;
   justify-self: center;
   align-content: center;
-  margin: 0 2% 2% 2%;
+  /* margin: 0 2% 2% 2%; */
   position: relative;
 }
 
@@ -472,35 +473,88 @@
 /* Image Page */
 /* ////////////////////////////////////////////////////////*/
 
+.whole-page {
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  position: relative;
+}
+
 .image-page {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   /* align-content: center; */
   justify-content: center;
   /* justify-items: center; */
   align-items: center;
   display: flex;
   position: relative;
+  padding-top: 20%;
+  
 }
 
 .image-page-container {
   display: flex;
-  width: 550px;
-  height: 550px;
+  width: 60vh;
+  height: 60vh;
   /* align-items: center; */
   justify-content: center;
   position: fixed;
   border: 15px solid #0F110C;
-  z-index: 99;
+  z-index: 1;
+
 }
 
 .image-page-image {
-  height: 470px;
+  height: fit-content;
   width: 100%;
+  /* margin: 1% auto; */
+}
+
+.comment-container {
+  /* display: flex; */
+  height: 40vh;
+  width: 60vh;
+  margin-left: 40%;
+  background-color: #1a83ff;
+  align-items: center;
+  justify-content: center;
+  /* position: relative; */
+  /* margin-top: 10%; */
   margin: 10% auto;
   /* align-items: center; */
-  /* align-content: center; */
-  /* justify-items: center; */
-  /* align-items: center; */
   /* justify-content: center; */
+  /* justify-items: center; */
+  /* align-content: center; */
+
+}
+
+.likes-banner {
+  display: flex;
+  width: 60vh;
+  background-color: #698F3F;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+  /* align-self: center; */
+}
+
+.likes-banner-content {
+  float: left;
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* CommentForm */
+/* ////////////////////////////////////////////////////////*/
+
+.comment-form {
+  width: 100%;
+}
+
+.comment-textarea {
+  width: 100%;
+  
 }

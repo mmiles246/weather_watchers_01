@@ -1,7 +1,8 @@
 class PostLikesController < ApplicationController
 
-    def like_image
+    def create
         @like=PostLike.new(like_params)
+        byebug
         if @like.save
             render json: @like, status: :created
         else
@@ -14,7 +15,7 @@ class PostLikesController < ApplicationController
     private 
 
     def like_params
-        params.permit(:id, :user_id, :post_id)
+        params.permit(:id, :post_id, :user_id)
     end
 
 end

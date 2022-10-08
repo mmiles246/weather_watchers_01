@@ -18,6 +18,19 @@ class PostLikesController < ApplicationController
         render json: post_like       
     end
 
+    def destroy
+        @current_user=User.find_by_id(session[:user_id])
+        byebug
+        @post_likes=PostLike.where(post_id: params[:post_id])
+        byebug
+        @post_likes.each do |like|
+            if like.user_id === @current_user.id
+                like.destroy
+            end
+        end
+        head :no_content
+    end
+
 
 
     private 

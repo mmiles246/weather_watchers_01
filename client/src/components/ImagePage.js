@@ -58,6 +58,14 @@ function ImagePage ({currentUser}) {
         .then(res => res.json())
         .then(data => console.log(data))
     }
+    
+    function clickToUnlike (e) {
+        e.preventDefault()
+        fetch(`/unlike-image/${imageId}`, {
+            method: 'DELETE'
+        })
+
+    }
 
 
     return(
@@ -67,7 +75,7 @@ function ImagePage ({currentUser}) {
                 
                 <div className='image-page-container'>
                     <UserBanner userWhoPosted={userWhoPosted} userWhoPostedAvatar={userWhoPostedAvatar} />
-                    <img className='image-page-image' src={imageObject.image_url} id={imageObject.id} onClick={clickToLike} />
+                    <img className='image-page-image' src={imageObject.image_url} id={imageObject.id} onClick={!usersWhoLiked.includes(currentUser.id) ? clickToLike : clickToUnlike} />
                     
                 </div>
                     

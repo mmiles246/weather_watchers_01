@@ -3,7 +3,7 @@ function CommentCard ({comments}) {
     return(
         <>
         <div className="comment-card">
-            <p>{comments[0].content}</p>
+            {/* <p>{comments ? comments[0].content : ''}</p> */}
         </div>
         </>
     )

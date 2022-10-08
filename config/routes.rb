@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   # get '/locations-images', to: 'locations#images'
   delete '/logout', to: 'session#destroy'
 
+  delete '/unlike-image/:post_id', to: 'post_likes#destroy'
+
 
 
   get '*path',

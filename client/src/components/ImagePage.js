@@ -25,7 +25,7 @@ function ImagePage ({currentUser}) {
         fetch(`/clicked_image/${imageId}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            console.log(data.comments)
             setUserWhoPosted(data.user)
             setUsersWhoLiked(data.users_who_liked)
             setImageObject(data)
@@ -67,6 +67,10 @@ function ImagePage ({currentUser}) {
 
     }
 
+    function commentMapper (comment) {
+        <CommentCard content={comment.content} user={comment.user.username} />
+    }
+
 
     return(
         <>
@@ -91,7 +95,9 @@ function ImagePage ({currentUser}) {
                 </div>
                 <div className="comment-board">
                         {clickToComment ? <CommentForm currentUser={currentUser} imageId={imageId}/> : <></> }
-                        <CommentCard comments={comments}/>
+                        {comments ? comments.map(comment => <CommentCard content={comment.content} user={comment.user}/>) 
+                        :
+                        <></>}
                 </div>
             </div>
         </div>

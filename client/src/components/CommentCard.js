@@ -1,5 +1,8 @@
-function CommentCard ({comments}) {
-    console.log(comments)
+function CommentCard ({content, user}) {
+    
+    console.log(user)
+    console.log(content)
+
     return(
         <>
         <div className="comment-card">

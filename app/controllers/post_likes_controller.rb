@@ -7,9 +7,9 @@ class PostLikesController < ApplicationController
     end
 
     def like_image
-        byebug
+        # byebug
         post_like=PostLike.create(post_like_params)
-        byebug
+        # byebug
         # if post_like.save
         #     render json: post_like, status: :created
         # else
@@ -20,9 +20,9 @@ class PostLikesController < ApplicationController
 
     def destroy
         @current_user=User.find_by_id(session[:user_id])
-        byebug
+        # byebug
         @post_likes=PostLike.where(post_id: params[:post_id])
-        byebug
+        # byebug
         @post_likes.each do |like|
             if like.user_id === @current_user.id
                 like.destroy

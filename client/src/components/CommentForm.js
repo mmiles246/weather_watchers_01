@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function CommentForm ({currentUser, imageId}) {
+function CommentForm ({currentUser, imageId, setNewComment}) {
     const [commentContent, setCommentContent] = useState('')
 
     function postComment (e) {
@@ -16,6 +16,8 @@ function CommentForm ({currentUser, imageId}) {
                 post_id: imageId
             })
         })
+        setCommentContent('')
+        setNewComment(true)
     }
 
     return(

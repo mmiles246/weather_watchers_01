@@ -516,6 +516,7 @@
 
 .comment-container {
   /* display: flex; */
+  /* position: fixed; */
   height: 40vh;
   width: 60vh;
   margin-left: 40%;
@@ -525,6 +526,8 @@
   /* position: relative; */
   /* margin-top: 10%; */
   margin: 10% auto;
+  overflow: hidden;
+  overflow-y: scroll;
   /* align-items: center; */
   /* justify-content: center; */
   /* justify-items: center; */
@@ -563,4 +566,30 @@
 .comment-textarea {
   width: 100%;
   
+}
+
+/* ////////////////////////////////////////////////////////*/
+/* CommentCard */
+/* ////////////////////////////////////////////////////////*/
+
+.comment-card {
+  display: flex;
+  background-color: #00FFFFFF;
+  border: 1px solid #698F3F;
+  /* justify-items: center; */
+  justify-content: space-between;
+
+}
+
+.comment-content {
+  max-width: 70%;
+  /* overflow: scroll; */
+  margin: 0 0 0 0;
+  padding-left: 2%;
+}
+
+.user-who-commented {
+  margin: 0 0 0 0;
+  padding-right: 4%;
+  float: right;
 }

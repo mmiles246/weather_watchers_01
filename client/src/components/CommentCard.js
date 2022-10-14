@@ -1,12 +1,14 @@
 function CommentCard ({content, user}) {
-    
-    console.log(user)
-    console.log(content)
 
     return(
         <>
         <div className="comment-card">
-            {/* <p>{comments ? comments[0].content : ''}</p> */}
+            <div className="comment-content">
+                <p>{content}</p>
+            </div>
+            <div className="user-who-commented">
+                <p>{user}</p>
+            </div>
         </div>
         </>
     )

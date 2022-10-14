@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'user-who-posted/:id', to: 'users#find_user'
 
   get '/clicked_image/:id', to: 'posts#show'
+  get '/image-comments/:id', to: 'comments#image_comments'
   get '/posts_latest', to: 'posts#latest'
   get '/posts_show', to: 'posts#show'
   get '/my_posts', to: 'posts#current_user_posts'

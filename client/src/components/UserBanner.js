@@ -1,11 +1,15 @@
+import { Link } from 'react-router-dom'
+
 function UserBanner ({userWhoPosted, userWhoPostedAvatar}) {
     return(
         <>
         <div className='user-banner-container'>
             <div className='user-banner'>
+                <Link to={`/user/${userWhoPosted.id}`} state={userWhoPosted}>
                 <div className='user-banner-avatar'>
-                    <img src={userWhoPostedAvatar}/>
+                        {userWhoPostedAvatar ? <img src={userWhoPostedAvatar}/> : <i class="fa-solid fa-user"></i> }
                 </div>
+                </Link>
                 <div className='user-banner-username'>
                     <h3>{userWhoPosted.username}</h3>
                 </div>

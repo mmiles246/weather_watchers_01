@@ -35,6 +35,16 @@ class PostsController < ApplicationController
         render json: @post_links
     end
 
+    def users_posts
+        user = User.find_by(id: params[:id])
+        user_posts=user.posts
+        post_links=Array.new
+        user_posts.each do |post|
+            post_links.push(PostSerializer.new(post).serializable_hash[:data][:attributes])
+        end
+        render json: post_links
+    end
+
     def current_location_posts
         @current_location=Location.find_by(place_id: params[:place_id])
         @loc_posts=@current_location.posts

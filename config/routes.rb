@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get '/location-images/:place_id', to: 'posts#current_location_posts'
   get '/dummy-route', to: 'posts#index'
 
+  get '/user/:id', to: 'users#show'
+
   get 'user-who-posted/:id', to: 'users#find_user'
 
   get '/clicked_image/:id', to: 'posts#show'
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
   get '/posts_latest', to: 'posts#latest'
   get '/posts_show', to: 'posts#show'
   get '/my_posts', to: 'posts#current_user_posts'
+  get '/users_posts/:id', to: 'posts#users_posts'
   get '/locations', to: 'locations#place_id'
   get '/locations-placeids', to: 'locations#place_id'
   # get '/locations-images', to: 'locations#images'

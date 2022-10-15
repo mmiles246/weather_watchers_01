@@ -492,7 +492,7 @@
   align-items: center;
   display: flex;
   position: relative;
-  padding-top: 20%;
+  padding-top: 8%;
   
 }
 
@@ -503,7 +503,7 @@
   /* align-items: center; */
   justify-content: center;
   position: fixed;
-  border: 15px solid #0F110C;
+  border: 5px solid #0F110C;
   z-index: 1;
 
 }
@@ -519,13 +519,14 @@
   /* position: fixed; */
   height: 40vh;
   width: 60vh;
-  margin-left: 40%;
+  /* margin-left: 40%; */
   background-color: #1a83ff;
   align-items: center;
   justify-content: center;
   /* position: relative; */
   /* margin-top: 10%; */
-  margin: 10% auto;
+  margin: auto;
+  padding-top: 4%;
   overflow: hidden;
   overflow-y: scroll;
   /* align-items: center; */

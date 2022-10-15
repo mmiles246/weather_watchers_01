@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import FeedPage from "./components/FeedPage";
 import UserAccountPage from "./components/UserAccountPage";
 import PostModal from "./components/PostModal";
+import UserFeedPage from "./components/UserFeedPage";
 import ImagePage from "./components/ImagePage";
 
 function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo}) {
@@ -47,6 +48,24 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
         setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
         isMounted.current = true
     }
+
+    function imageObjsMapper (obj) {
+        return(
+        <div className='image-container'>
+            <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
+        </div>)
+    }
+
+    const clickEffect = useEffect(() => {
+        if (isMounted.current) {
+            navigate(`/image/${clickedImageId}`, {state: clickedImageId})
+            isMounted.current = false
+            setClickedImage(null)
+        } else {
+            isMounted.current = false
+        }
+    }, [imageClick])
+
     
     return (
         <>
@@ -81,7 +100,8 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
                 <Route path='feed' element={<FeedPage />}>
                     <Route path='popular' element={<FeedPage/>} />
                 </Route>
-                <Route path='my-account' element={<UserAccountPage currentUser={currentUser} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} clickedImageUrl={clickedImageUrl} setClickedImageUrl={setClickedImageUrl} clickedImage={clickedImage} setClickedImage={setClickedImage} imageClick={imageClick} isMounted={isMounted} imageObjs={imageObjs} />}/>
+                <Route path='my-account' element={<UserAccountPage currentUser={currentUser} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} clickedImageUrl={clickedImageUrl} setClickedImageUrl={setClickedImageUrl} clickedImage={clickedImage} setClickedImage={setClickedImage} imageClick={imageClick} isMounted={isMounted} imageObjs={imageObjs} imageObjsMapper={imageObjsMapper} />}/>
+                <Route path='user/:id' element={<UserFeedPage imageObjsMapper={imageObjsMapper} isMounted={isMounted} />} />
                 <Route path='image/:id' element={<ImagePage currentUser={currentUser}  />} />
                 <Route path='create-post' element={<PostModal currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
                 {/* </Route> */}

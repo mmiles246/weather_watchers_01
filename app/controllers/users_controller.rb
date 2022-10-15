@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     end
 
     def show
+        user=User.find_by(id: params[:id])
+        render json: UserSerializer.new(user).serializable_hash[:data][:attributes]
+    end
+
+    def show_current_user
         if @current_user
             render json: @current_user
         else 

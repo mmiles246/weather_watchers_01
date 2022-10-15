@@ -22,7 +22,6 @@ function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLoc
     useEffect(() => {
         Geocode.fromAddress(autocompleteAddress)
         .then(res => {
-            console.log(res)
             setLat(res.results[0].geometry.location.lat)
             setLng(res.results[0].geometry.location.lng)
         })
@@ -33,8 +32,6 @@ function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLoc
     }, [placeId])
 
     function checkForSearchedLocation (placeId, storedLocations) {
-        console.log(placeId)
-        console.log(storedLocations)
         if(!storedLocations.includes(placeId)) {
             console.log(false)
             fetch('/add_location', {
@@ -50,7 +47,7 @@ function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLoc
             .then(res=>res.json())
             .then()
         } else {
-            console.log(true)
+            // console.log(true)
         }
     }
 

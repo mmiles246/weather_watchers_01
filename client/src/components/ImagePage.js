@@ -16,7 +16,7 @@ function ImagePage ({currentUser}) {
     const [likeClick, setLikeClick] = useState(false)
     const [newComment, setNewComment] = useState(false)
 
-    const [clickToComment, setClickToComment] = useState(true)
+    const [clickToComment, setClickToComment] = useState(false)
 
     let location = useLocation();
 
@@ -77,7 +77,6 @@ function ImagePage ({currentUser}) {
     }
 
     function commentMapper (eachComment) {
-        console.log(eachComment.user)
         return <CommentCard content={eachComment.content} user={eachComment.user.username} />
     }
 

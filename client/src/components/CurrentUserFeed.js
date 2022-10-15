@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted, imageObjs}) {
+function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted, imageObjs, imageObjsMapper}) {
     // const [imageObjs, setImageObjs] = useState([])
     // const [clickedImageUrl, setClickedImageUrl] = useState()
     // const [clickedImageId, setClickedImageId] = useState()
@@ -50,12 +50,12 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
     
     
 
-    function imageObjsMapper (obj) {
-        return(
-        <div className='image-container'>
-            <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
-        </div>)
-    }
+    // function imageObjsMapper (obj) {
+    //     return(
+    //     <div className='image-container'>
+    //         <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
+    //     </div>)
+    // }
 
     function onSubmit (e) {
         e.preventDefault()

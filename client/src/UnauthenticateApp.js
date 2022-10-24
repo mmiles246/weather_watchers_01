@@ -5,7 +5,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 
 
-function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setStoredLocations}) {
+function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setStoredLocations, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick}) {
 
     return(
         <>
@@ -23,6 +23,7 @@ function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, user
                     placeId={placeId}
                     isMounted={isMounted}
                     currentLocationInfo={currentLocationInfo}
+                    imageClick={imageClick}
                     />
                 } />
                 <Route path='signup' element={<Signup storedLocations={storedLocations} setStoredLocations={setStoredLocations}/>} />

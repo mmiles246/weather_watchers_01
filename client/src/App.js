@@ -23,6 +23,10 @@ function App() {
   const [storedLocations, setStoredLocations] = useState([])
   const [currentLocationInfo, setCurrentLocationInfo]=useState([])
 
+  const [clickedImageUrl, setClickedImageUrl] = useState()
+  const [clickedImageId, setClickedImageId] = useState()
+  const [imageObjs, setImageObjs] = useState([])
+
   // const [clickedImageUrl, setClickedImageUrl] = useState()
   // const [clickedImageId, setClickedImageId] = useState()
   // const [clickedImage, setClickedImage] = useState()
@@ -107,6 +111,17 @@ function App() {
             }
         })
     }, [placeId])
+
+    function imageClick (e) {
+      if (currentUser) {
+          setClickedImageId(parseInt(e.target.getAttribute('imageId')))
+          setClickedImageUrl(e.target.getAttribute('src'))
+          // setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
+          isMounted.current = true
+      } else {
+          alert("Please create account or sign-in to interact with posts")
+      }
+  }
   
   return (
     <BrowserRouter>
@@ -127,7 +142,13 @@ function App() {
       setPlaceId={setPlaceId}
       storedLocations={storedLocations}
       isMounted={isMounted}
-      currentLocationInfo={currentLocationInfo} /> 
+      currentLocationInfo={currentLocationInfo}
+      clickedImageUrl={clickedImageUrl}
+      setClickedImageUrl={setClickedImageUrl}
+      clickedImageId={clickedImageId}
+      setClickedImageId={setClickedImageId}
+      imageClick={imageClick}
+       /> 
       : 
       <UnauthenticatedApp
       currentUser={currentUser}
@@ -147,6 +168,11 @@ function App() {
       setStoredLocations={setStoredLocations}
       isMounted={isMounted}
       currentLocationInfo={currentLocationInfo}
+      clickedImageUrl={clickedImageUrl}
+      setClickedImageUrl={setClickedImageUrl}
+      clickedImageId={clickedImageId}
+      setClickedImageId={setClickedImageId}
+      imageClick={imageClick}
       />
     }
     </BrowserRouter>

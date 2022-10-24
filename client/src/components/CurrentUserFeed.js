@@ -30,32 +30,17 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
     //     })
     // }, [])
 
-    // function imageClick (e) {
-    //     setClickedImageId(parseInt(e.target.getAttribute('imageId')))
-    //     setClickedImageUrl(e.target.getAttribute('src'))
-    //     setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
-    //     isMounted.current = true
-    // }
 
         useEffect(() => {
             if (isMounted.current) {
                 navigate(`/image/${clickedImageId}`, {state: clickedImageId})
                 isMounted.current = false
-                setClickedImage(null)
+                setClickedImageId(null)
             } else {
                 isMounted.current = false
             }
         }, [imageClick])
     
-    
-    
-
-    // function imageObjsMapper (obj) {
-    //     return(
-    //     <div className='image-container'>
-    //         <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
-    //     </div>)
-    // }
 
     function onSubmit (e) {
         e.preventDefault()

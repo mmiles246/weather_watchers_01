@@ -2,7 +2,7 @@ import {useState, useEffect, useRef} from 'react';
 import {useNavigate} from 'react-router-dom'
 
 
-function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted, currentLocationInfo}) {
+function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, imageClick, isMounted, currentLocationInfo}) {
     // const [currentLocationInfo, setCurrentLocationInfo]=useState([])
 
     // const isMounted = useRef(false)
@@ -34,13 +34,6 @@ function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, 
         // }
     }, [imageClick])
 
-    // function imageClick (e) {
-    //     setClickedImageId(parseInt(e.target.getAttribute('imageId')))
-    //     setClickedImageUrl(e.target.getAttribute('src'))
-    //     setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
-    //     isMounted.current = true
-    // }
-
 
     function imageMapper (obj) {
         return(
@@ -60,9 +53,6 @@ function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, 
                 <h2>{userLocationName}  </h2>    
             </div>
             <div className='home-image-feed'>
-                {/* if(currententLocationInfo) {
-                currentLocationInfo.map(imageObjsMapper)
-                } else {} */}
                 {currentLocationInfo ? currentLocationInfo.map(imageMapper) : ''}
                 
             </div>

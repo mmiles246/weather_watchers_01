@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect, useRef } from 'react';
-import {BrowserRouter, useOutletContext} from 'react-router-dom'
+import {BrowserRouter, useOutletContext, useNavigate } from 'react-router-dom'
 import AuthenticatedApp from './AuthenticatedApp';
 import UnauthenticatedApp from './UnauthenticateApp';
 import {useLoadScript} from '@react-google-maps/api'
@@ -33,6 +33,7 @@ function App() {
   // const [imageObjs, setImageObjs] = useState([])
 
   const isMounted = useRef(false)
+
 
   useEffect(() => {
     fetch('/me')
@@ -122,6 +123,16 @@ function App() {
           alert("Please create account or sign-in to interact with posts")
       }
   }
+
+//   const clickEffect = useEffect(() => {
+//     if (isMounted.current) {
+//         navigate(`/image/${clickedImageId}`, {state: clickedImageId})
+//         isMounted.current = false
+//         setClickedImageId(null)
+//     } else {
+//         isMounted.current = false
+//     }
+// }, [imageClick])
   
   return (
     <BrowserRouter>
@@ -148,6 +159,7 @@ function App() {
       clickedImageId={clickedImageId}
       setClickedImageId={setClickedImageId}
       imageClick={imageClick}
+      // clickEffect={clickEffect}
        /> 
       : 
       <UnauthenticatedApp

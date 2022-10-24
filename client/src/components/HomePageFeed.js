@@ -11,18 +11,6 @@ function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, 
 
     // console.log(currentLocationInfo)
 
-    // useEffect(() => {
-    //     fetch(`/location-placeId/${placeId}`)
-    //     .then(res => {
-    //         if (res.ok) {
-    //             res.json().then(data => {
-    //                 console.log(data)
-    //                 setCurrentLocationInfo(data)
-    //             })
-    //         }
-    //     })
-    // }, [placeId])
-
     useEffect(() => {
         if (isMounted.current) {
             navigate(`/image/${clickedImageId}`, {state: clickedImageId})

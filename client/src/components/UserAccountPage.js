@@ -5,7 +5,6 @@ function UserAccountPage ({currentUser, clickedImageId, setClickedImageId, click
 
     return(
         <>
-        <AccountPageBanner />
         <CurrentUserFeed currentUser={currentUser} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} clickedImageUrl={clickedImageUrl} setClickedImageUrl={setClickedImageUrl} clickedImage={clickedImage} setClickedImage={setClickedImage} imageClick={imageClick} isMounted={isMounted} imageObjs={imageObjs} imageObjsMapper={imageObjsMapper} />
         </>
     )

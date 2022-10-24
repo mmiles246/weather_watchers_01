@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import EachHourCard from './EachHourCard'
+import WidgetToggle from './WidgetToggle'
 
-function HourlyForcastWidget ({userLocationKey, localIcon, iconNum}) {
+function HourlyForcastWidget ({userLocationKey, localIcon, iconNum, widgetToggle, setWidgetToggle}) {
     const [hourlyForcastArray, setHourlyForcastArray] = useState([])
 
     useEffect (() => {
@@ -20,6 +21,9 @@ function HourlyForcastWidget ({userLocationKey, localIcon, iconNum}) {
     return(
         <>
             <div className="hourly-forcast-widget">
+                <div className='toggle'>
+                    <WidgetToggle widgetToggle={widgetToggle} setWidgetToggle={setWidgetToggle} />
+                </div>
                 <div className='hourly-forcast-card'>
                     {hourlyForcastArray.map(hourlyForcastMapper)}
                 </div>

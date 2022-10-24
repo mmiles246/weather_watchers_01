@@ -10,7 +10,7 @@ import PostModal from "./components/PostModal";
 import UserFeedPage from "./components/UserFeedPage";
 import ImagePage from "./components/ImagePage";
 
-function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick}) {
+function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick, clickEffect}) {
     // const [clickedImageUrl, setClickedImageUrl] = useState()
     // const [clickedImageId, setClickedImageId] = useState()
     // const [clickedImage, setClickedImage] = useState()
@@ -56,7 +56,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
     function imageObjsMapper (obj) {
         return(
         <div className='image-container'>
-            <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
+            <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} postedAt={obj.created_at} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
         </div>)
     }
 
@@ -64,7 +64,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
     //     if (isMounted.current) {
     //         navigate(`/image/${clickedImageId}`, {state: clickedImageId})
     //         isMounted.current = false
-    //         setClickedImage(null)
+    //         setClickedImageId(null)
     //     } else {
     //         isMounted.current = false
     //     }
@@ -97,6 +97,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
                     isMounted={isMounted}
                     imageObjs={imageObjs}
                     currentLocationInfo={currentLocationInfo}
+                    // clickEffect={clickEffect}
                     />
                 } />
                 <Route path='signup' element={<Signup />} />
@@ -105,7 +106,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
                     <Route path='popular' element={<FeedPage/>} />
                 </Route>
                 <Route path='my-account' element={<UserAccountPage currentUser={currentUser} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} clickedImageUrl={clickedImageUrl} setClickedImageUrl={setClickedImageUrl} imageClick={imageClick} isMounted={isMounted} imageObjs={imageObjs} imageObjsMapper={imageObjsMapper} />}/>
-                <Route path='user/:id' element={<UserFeedPage imageObjsMapper={imageObjsMapper} isMounted={isMounted} />} />
+                <Route path='user/:id' element={<UserFeedPage imageObjsMapper={imageObjsMapper} isMounted={isMounted} imageClick={imageClick} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} />} />
                 <Route path='image/:id' element={<ImagePage currentUser={currentUser}  />} />
                 <Route path='create-post' element={<PostModal currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
                 {/* </Route> */}

@@ -1,6 +1,7 @@
+import WidgetToggle from './WidgetToggle'
 import { useState, useEffect } from 'react'
 
-function DailyForcastWidget () {
+function DailyForcastWidget ({widgetToggle, setWidgetToggle}) {
     const [dailyForcastObj, setDailyForcastObj] = useState(null)
 
     useEffect (() => {
@@ -11,7 +12,11 @@ function DailyForcastWidget () {
 
     return(
         <>
+        
         <div className="daily-forcast-widget">
+                    <div className='toggle'>
+                        <WidgetToggle widgetToggle={widgetToggle} setWidgetToggle={setWidgetToggle} />
+                    </div>
                     <div className='daily-forcast-location'>
                         {userLocationName ? <span>{userLocationName}</span> : <></>}
                     </div>

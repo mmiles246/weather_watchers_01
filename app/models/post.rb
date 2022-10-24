@@ -24,6 +24,18 @@ class Post < ApplicationRecord
     user_ids
   end
 
+  def date_posted
+    attributes['created_at'].strftime("%B %d, %Y")
+  end
+
+  def time_posted
+    attributes['created_at'].strftime("%I:%M%p")
+  end
+
+  def created_at
+    attributes['created_at'].strftime("%Y-%m-%d")
+  end
+
   # def comment_content
   #   comment_content=Array.new
   #   comments.each do |comment|

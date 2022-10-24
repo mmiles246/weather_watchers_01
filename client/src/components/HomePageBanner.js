@@ -54,6 +54,8 @@ function HomePageBanner ({currentConditions, userLocationName, userLocationKey, 
                 userLocationKey={userLocationKey}
                 localIcon={localIcon}
                 iconNum={iconNum}
+                widgetToggle={widgetToggle}
+                setWidgetToggle={setWidgetToggle}
                 />)
                 }
                 <div className="events-widget">

@@ -30,7 +30,7 @@ function Home ({userLocationKey, userLocationName, userState, currentConditions,
                         setClickedImageUrl={setClickedImageUrl} 
                         imageClick={imageClick} 
                         isMounted={isMounted}
-                        currentLocationInfo={currentLocationInfo} 
+                        currentLocationInfo={currentLocationInfo}
                         />
                 </div>
             </div>

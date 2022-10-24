@@ -8,7 +8,7 @@ function CurrentConditionsWidget ({userLocationName, currentConditions, iconNum,
             
             <div className="temp-widget">
                 <div className='toggle'>
-                <WidgetToggle widgetToggle={widgetToggle} setWidgetToggle={setWidgetToggle} />
+                {userLocationName ? (<WidgetToggle widgetToggle={widgetToggle} setWidgetToggle={setWidgetToggle}/>) : '' }
                 </div>
                     <div className='temp-widget-deets'>
                         <div className='temp-widget-location'>

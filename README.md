@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Weather Watchers is currently in development!
 
-Things you may want to cover:
+If you would like to see where the project currently stands and see the progress made along the way please fork and clone this repository to your local machine and follow the steps below...
 
-* Ruby version
+Open the codes base in your preffered code editor, open a terminal window, and run the following command to download necessary rails dependencies:
 
-* System dependencies
+    $ bundle install
+    
+Next we need to run the following in order to install React dependencies:
 
-* Configuration
+    $ npm install --prefix client
+    
+Now we can begin to launch the application, in the terminal run:
 
-* Database creation
+    $ rails s
 
-* Database initialization
+After launching the rails server, open an additional terminal window and run the following command to launch the React portion of the application:
 
-* How to run the test suite
+    $ npm start --prefix client
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+Hope you enjoy fellow Weather Watchers!

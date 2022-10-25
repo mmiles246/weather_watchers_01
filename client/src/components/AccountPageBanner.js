@@ -1,5 +1,5 @@
-function AccountPageBanner ({userAvatar, userInfo, numOfPosts}) {
-
+function AccountPageBanner ({userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate}) {
+    console.log(diffInDate)
     return(
         <>
         <div className="banner-container">
@@ -8,8 +8,8 @@ function AccountPageBanner ({userAvatar, userInfo, numOfPosts}) {
                 <h3>{userInfo ? userInfo.username : ''}</h3>
             </div>
             <div className="account-info">
-                <h3>Posts {numOfPosts}</h3>
-             
+                <h3>Posts: {numOfPosts}</h3>
+                <h3>Last Posted: {(diffInDate===0) ? 'today' : (diffInDate + ' days ago')} </h3>
             </div>
             <div className="account-drop-menu">
                 

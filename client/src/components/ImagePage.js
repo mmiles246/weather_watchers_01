@@ -87,7 +87,7 @@ function ImagePage ({currentUser}) {
             <div className='image-page'>
                 
                 <div className='image-page-container'>
-                    <UserBanner userWhoPosted={userWhoPosted} userWhoPostedAvatar={userWhoPostedAvatar} />
+                    <UserBanner userWhoPosted={userWhoPosted} userWhoPostedAvatar={userWhoPostedAvatar} currentUser={currentUser} />
                     <img className='image-page-image' src={imageObject.image_url} id={imageObject.id} onClick={!usersWhoLiked.includes(currentUser.id) ? clickToLike : clickToUnlike} />
                     
                 </div>

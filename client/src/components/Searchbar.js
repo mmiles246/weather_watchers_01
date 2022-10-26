@@ -4,7 +4,7 @@ import Geocode from "react-geocode"
 // import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import Autocomplete from "react-google-autocomplete";
 
-function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLocations, setStoredLocations}) {
+function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLocations, setStoredLocations, setCurrentLocationInfo}) {
     const [postalCode, setPostalCode] = useState('')
     const [autocompleteAddress, setAutocompleteAddress] = useState('')
     const [value, setValue] =useState(null)
@@ -51,25 +51,15 @@ function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLoc
         }
     }
 
-    // function triggerLocationSearch (placeId) {
-    //     checkForSearchedLocation(placeId, storedLocations)
-    // }
-
-
 
     return(
-        // <form  >
-        // <LoadScript googleMapsApiKey="">
         <div className="search--primary">
             <div className="search-input">
                 <Autocomplete apiKey={process.env.REACT_APP_GOOGLE_KEY} id='autocomplete' storedLocations={storedLocations} onPlaceSelected={(place, inputRef, autocomplete) => {
                     setPlaceId(place.place_id); 
                     setAutocompleteAddress(place.formatted_address);
-                    // triggerLocationSearch(place.place_id);
-                    // checkForSearchedLocation(storedLocations, place.place_id);
-                    // console.log(storedLocations)
-                    // console.log(place); 
-                    console.log(place.formatted_address); 
+                    console.log(place.formatted_address)
+                    setCurrentLocationInfo([]); 
                     
                     }}>
                     {/* <input id="input" type='text' /> */}
@@ -82,8 +72,6 @@ function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLoc
                 
             </div>
         </div>
-        // </LoadScript>
-        // </form>
     )
 
 }

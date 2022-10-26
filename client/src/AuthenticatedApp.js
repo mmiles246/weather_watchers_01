@@ -10,7 +10,7 @@ import PostModal from "./components/PostModal";
 import UserFeedPage from "./components/UserFeedPage";
 import ImagePage from "./components/ImagePage";
 
-function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick, clickEffect}) {
+function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setCurrentLocationInfo, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick, clickEffect}) {
     // const [clickedImageUrl, setClickedImageUrl] = useState()
     // const [clickedImageId, setClickedImageId] = useState()
     // const [clickedImage, setClickedImage] = useState()
@@ -61,7 +61,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
     
     return (
         <>
-        <NavBar setLat={setLat} setLng={setLng} currentUser={currentUser} setCurrentUser={setCurrentUser} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} />
+        <NavBar setLat={setLat} setLng={setLng} currentUser={currentUser} setCurrentUser={setCurrentUser} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} setCurrentLocationInfo={setCurrentLocationInfo} />
         <Routes>
                 <Route path='/' element={
                     <Home 

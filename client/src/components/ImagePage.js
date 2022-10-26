@@ -15,6 +15,7 @@ function ImagePage ({currentUser}) {
     const [comments, setComments] = useState([])
     const [likeClick, setLikeClick] = useState(false)
     const [newComment, setNewComment] = useState(false)
+    const [usersThatLikedComment, setUsersThatLikedComment] = useState([])
 
     const [clickToComment, setClickToComment] = useState(false)
 
@@ -40,7 +41,9 @@ function ImagePage ({currentUser}) {
             fetch(`/image-comments/${imageId}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setComments(data)
+                setUsersThatLikedComment(data.users_who_liked)
             })
         })
 
@@ -77,7 +80,7 @@ function ImagePage ({currentUser}) {
     }
 
     function commentMapper (eachComment) {
-        return <CommentCard content={eachComment.content} user={eachComment.user.username} />
+        return <CommentCard id={eachComment.id} content={eachComment.content} user={eachComment.user.username} currentUser={currentUser} usersThatLikedComment={eachComment.users_who_liked} setLikeClick={setLikeClick} />
     }
 
 

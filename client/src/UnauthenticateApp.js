@@ -5,11 +5,11 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 
 
-function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setStoredLocations, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick}) {
+function UnauthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setCurrentLocationInfo, setStoredLocations, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick}) {
 
     return(
         <>
-        <NavBar setLat={setLat} setLng={setLng} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} setStoredLocations={setStoredLocations} />
+        <NavBar setLat={setLat} setLng={setLng} placeId={placeId} setPlaceId={setPlaceId} storedLocations={storedLocations} setStoredLocations={setStoredLocations} setCurrentLocationInfo={setCurrentLocationInfo} />
             <Routes>
                 <Route path='/' element={
                     <Home 

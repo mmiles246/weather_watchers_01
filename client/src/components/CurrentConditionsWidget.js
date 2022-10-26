@@ -1,4 +1,5 @@
 import WidgetToggle from "./WidgetToggle";
+import iconRender from "../hooks/iconRender";
 
 function CurrentConditionsWidget ({userLocationName, currentConditions, iconNum, triggerLocation, localIcon, widgetToggle, setWidgetToggle}) {
 
@@ -15,7 +16,7 @@ function CurrentConditionsWidget ({userLocationName, currentConditions, iconNum,
                             {userLocationName ? <span>{userLocationName}</span> : <></>}
                         </div>
                         <div className="temp-widget-icon">
-                            <i class={ !iconNum ? "fa-solid fa-3x fa-location-arrow" : localIcon(iconNum)} onClick={triggerLocation}></i>  
+                            <i class={ !iconNum ? "fa-solid fa-3x fa-location-arrow" : iconRender(iconNum)} onClick={triggerLocation}></i>  
                         </div>
                         <div className="local-temp">
                             {iconNum ? <span>{currentConditions.Temperature.Imperial.Value}</span> : <></>}

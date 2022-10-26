@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post '/like-image', to: 'post_likes#like_image'
 
   post '/post-comment', to: 'comments#create'
+  post '/like-comment', to: 'comment_likes#create'
+
 
   patch '/update_user/:id', to: 'users#avatar_upload'
   
@@ -41,6 +43,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'session#destroy'
 
   delete '/unlike-image/:post_id', to: 'post_likes#destroy'
+  delete '/unlike-comment/:comment_id', to: 'comment_likes#destory'
 
 
 

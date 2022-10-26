@@ -154,6 +154,7 @@ function App() {
       storedLocations={storedLocations}
       isMounted={isMounted}
       currentLocationInfo={currentLocationInfo}
+      setCurrentLocationInfo={setCurrentLocationInfo}
       clickedImageUrl={clickedImageUrl}
       setClickedImageUrl={setClickedImageUrl}
       clickedImageId={clickedImageId}
@@ -180,6 +181,7 @@ function App() {
       setStoredLocations={setStoredLocations}
       isMounted={isMounted}
       currentLocationInfo={currentLocationInfo}
+      setCurrentLocationInfo={setCurrentLocationInfo}
       clickedImageUrl={clickedImageUrl}
       setClickedImageUrl={setClickedImageUrl}
       clickedImageId={clickedImageId}

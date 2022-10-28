@@ -52,14 +52,19 @@ class PostsController < ApplicationController
         @loc_posts.each do |post|
             @loc_posts_urls.push(PostSerializer.new(post).serializable_hash[:data][:attributes])
         end
+        # byebug
         render json: @loc_posts_urls
     end
 
-    def latest
-        @post=Post.last
-        # render json: @post
-        render json: PostSerializer.new(@post).serializable_hash[:data][:attributes]
+    def todays_top
+        todays_top_posts=Post.where("DATE(created_at) >= DATE(?)", Date.today)
+        ttp_urls=Array.new
+        todays_top_posts.each do |post|
+            ttp_urls.push(PostSerializer.new(post).serializable_hash[:data][:attributes])
+        end
+        render json: ttp_urls
     end
+
 
     def destroy
         @post.destroy

@@ -2,7 +2,7 @@ import AccountPageBanner from './AccountPageBanner'
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-function UserFeedPage ({imageObjsMapper, isMounted, imageClick, clickedImageId, setClickedImageId, userInfo, setUserInfo, dateOfLastPost, setDateOfLastPost, numOfPosts, setNumOfPosts, diffInDate}) {
+function UserFeedPage ({imageObjsMapper, isMounted, imageClick, clickedImageId, setClickedImageId, userInfo, setUserInfo, dateOfLastPost, setDateOfLastPost, numOfPosts, setNumOfPosts, diffInDate, calculateDays}) {
     const [userObject, setUserObject] = useState({})
     const [userPosts, setUserPosts] = useState([])
     const [userAvatar, setUserAvatar] = useState()
@@ -47,24 +47,24 @@ function UserFeedPage ({imageObjsMapper, isMounted, imageClick, clickedImageId, 
 
     // let diffInDate=null
 
-    if (dateOfLastPost) {
+    // if (dateOfLastPost) {
 
-        const currentDate = new Date()
-        console.log(currentDate)
-        const dayOfLastPost = dateOfLastPost
-        const timeOfLastPost = dayOfLastPost.getTime()
+    //     const currentDate = new Date()
+    //     console.log(currentDate)
+    //     const dayOfLastPost = dateOfLastPost
+    //     const timeOfLastPost = dayOfLastPost.getTime()
         
 
-        const diffInTime = currentDate.getTime() - timeOfLastPost
-        console.log(diffInTime)
-        diffInDate = Math.floor(diffInTime/(1000*60*60*24))
-    }
+    //     const diffInTime = currentDate.getTime() - timeOfLastPost
+    //     console.log(diffInTime)
+    //     diffInDate = Math.floor(diffInTime/(1000*60*60*24))
+    // }
 
     return(
         <>
         <div className="feed-container">
             <div className='feed-header'>
-                <AccountPageBanner userAvatar={userAvatar} userInfo={userInfo} numOfPosts={numOfPosts} diffInDate={diffInDate} />
+                <AccountPageBanner userAvatar={userAvatar} userInfo={userInfo} numOfPosts={numOfPosts} diffInDate={diffInDate} dateOfLastPost={dateOfLastPost} calculateDays={calculateDays} />
                 <div className='user-avatar'>
                 </div>
                 <div className='current-user'>

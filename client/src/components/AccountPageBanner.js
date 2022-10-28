@@ -1,5 +1,5 @@
-function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate}) {
-    console.log(diffInDate)
+function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate, dateOfLastPost, calculateDays}) {
+    console.log(dateOfLastPost)
     return(
         <>
         <div className="banner-container">

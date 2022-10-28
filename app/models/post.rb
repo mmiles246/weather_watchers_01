@@ -28,13 +28,17 @@ class Post < ApplicationRecord
     attributes['created_at'].strftime("%B %d, %Y")
   end
 
+  def date_YMD_form
+    attributes['created_at'].strftime("%Y-%m-%d")
+  end
+
   def time_posted
     attributes['created_at'].strftime("%I:%M%p")
   end
 
-  def created_at
-    attributes['created_at'].strftime("%Y-%m-%d")
-  end
+  # def created_at
+  #   attributes['created_at'].strftime("%Y-%m-%d")
+  # end
 
   # def comment_content
   #   comment_content=Array.new

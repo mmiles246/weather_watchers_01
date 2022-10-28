@@ -9,14 +9,15 @@ import UserAccountPage from "./components/UserAccountPage";
 import PostModal from "./components/PostModal";
 import UserFeedPage from "./components/UserFeedPage";
 import ImagePage from "./components/ImagePage";
+import TodaysHomePageFeed from "./components/TodaysHomePageFeed";
 
-function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setCurrentLocationInfo, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick, clickEffect}) {
+function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setCurrentLocationInfo, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick, clickEffect, dateOfLastPost, setDateOfLastPost, imageObjsMapper}) {
     // const [clickedImageUrl, setClickedImageUrl] = useState()
     // const [clickedImageId, setClickedImageId] = useState()
     // const [clickedImage, setClickedImage] = useState()
     const [imageObjs, setImageObjs] = useState([])
     const [userInfo, setUserInfo] = useState({})
-    const [dateOfLastPost, setDateOfLastPost] = useState()
+    // const [dateOfLastPost, setDateOfLastPost] = useState()
     const [numOfPosts, setNumofPosts] = useState()
     // const [currentLocationInfo, setCurrentLocationInfo]=useState([])
 
@@ -37,26 +38,29 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
         })
     }, [currentUser])
 
-    let diffInDate=null
+    let diffInDate=null;
 
-    if (dateOfLastPost) {
+    function calculateDays (dateOfLastPost) {
+        if (dateOfLastPost) {
 
-        const currentDate = new Date()
-        const dayOfLastPost = dateOfLastPost
-        const timeOfLastPost = dayOfLastPost.getTime()
-        
-
-        const diffInTime = currentDate.getTime() - timeOfLastPost
-        console.log(diffInTime)
-        diffInDate = Math.floor(diffInTime/(1000*60*60*24))
+            const currentDate = new Date()
+            const dayOfLastPost = dateOfLastPost
+            const timeOfLastPost = dayOfLastPost.getTime()
+            
+    
+            const diffInTime = currentDate.getTime() - timeOfLastPost
+            console.log(diffInTime)
+            diffInDate = Math.floor(diffInTime/(1000*60*60*24))
+        }
+        return diffInDate;
     }
 
-    function imageObjsMapper (obj) {
-        return(
-        <div className='image-container'>
-            <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} postedAt={obj.created_at} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
-        </div>)
-    }
+    // function imageObjsMapper (obj) {
+    //     return(
+    //     <div className='image-container'>
+    //         <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} postedAt={obj.created_at} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
+    //     </div>)
+    // }
 
     
     return (
@@ -85,6 +89,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
                     isMounted={isMounted}
                     imageObjs={imageObjs}
                     currentLocationInfo={currentLocationInfo}
+                    imageObjsMapper={imageObjsMapper}
                     // clickEffect={clickEffect}
                     />
                 } />
@@ -94,7 +99,7 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
                     <Route path='popular' element={<FeedPage/>} />
                 </Route>
                 <Route path='my-account' element={<UserAccountPage currentUser={currentUser} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} clickedImageUrl={clickedImageUrl} setClickedImageUrl={setClickedImageUrl} imageClick={imageClick} isMounted={isMounted} imageObjs={imageObjs} imageObjsMapper={imageObjsMapper} userInfo={userInfo} setUserInfo={setUserInfo} dateOfLastPost={dateOfLastPost} setDateOfLastPost={setDateOfLastPost} numOfPosts={numOfPosts} diffInDate={diffInDate}  />}/>
-                <Route path='user/:id' element={<UserFeedPage imageObjsMapper={imageObjsMapper} isMounted={isMounted} imageClick={imageClick} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} userInfo={userInfo} setUserInfo={setUserInfo} dateOfLastPost={dateOfLastPost} setDateOfLastPost={setDateOfLastPost} numOfPosts={numOfPosts} setNumofPosts={setNumofPosts} />} />
+                <Route path='user/:id' element={<UserFeedPage imageObjsMapper={imageObjsMapper} isMounted={isMounted} imageClick={imageClick} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} userInfo={userInfo} setUserInfo={setUserInfo} dateOfLastPost={dateOfLastPost} setDateOfLastPost={setDateOfLastPost} numOfPosts={numOfPosts} setNumofPosts={setNumofPosts} calculateDays={calculateDays} />} />
                 <Route path='image/:id' element={<ImagePage currentUser={currentUser}  />} />
                 <Route path='create-post' element={<PostModal currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
                 {/* </Route> */}

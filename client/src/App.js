@@ -22,10 +22,12 @@ function App() {
   const [placeId, setPlaceId] = useState('')
   const [storedLocations, setStoredLocations] = useState([])
   const [currentLocationInfo, setCurrentLocationInfo]=useState([])
+  const [todaysTopImages, setTodaysTopImages] = useState([])
 
   const [clickedImageUrl, setClickedImageUrl] = useState()
   const [clickedImageId, setClickedImageId] = useState()
   const [imageObjs, setImageObjs] = useState([])
+  const [dateOfLastPost, setDateOfLastPost] = useState()
 
   // const [clickedImageUrl, setClickedImageUrl] = useState()
   // const [clickedImageId, setClickedImageId] = useState()
@@ -56,6 +58,7 @@ function App() {
     .then(data => {
         if (data) {
             setStoredLocations(data)
+            setDateOfLastPost(new Date(data.slice(-1)[0].date_posted))
     }})
     
 }, [])
@@ -124,6 +127,13 @@ function App() {
       }
   }
 
+  function imageObjsMapper (obj) {
+    return(
+    <div className='image-container'>
+        <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} postedAt={obj.created_at} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
+    </div>)
+}
+
 //   const clickEffect = useEffect(() => {
 //     if (isMounted.current) {
 //         navigate(`/image/${clickedImageId}`, {state: clickedImageId})
@@ -161,6 +171,9 @@ function App() {
       setClickedImageId={setClickedImageId}
       imageClick={imageClick}
       // clickEffect={clickEffect}
+      dateOfLastPost={dateOfLastPost}
+      setDateOfLastPost={setDateOfLastPost}
+      imageObjsMapper={imageObjsMapper}
        /> 
       : 
       <UnauthenticatedApp
@@ -187,6 +200,7 @@ function App() {
       clickedImageId={clickedImageId}
       setClickedImageId={setClickedImageId}
       imageClick={imageClick}
+      imageObjsMapper={imageObjsMapper}
       />
     }
     </BrowserRouter>

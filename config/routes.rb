@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   patch '/update_user/:id', to: 'users#avatar_upload'
   
   get '/location-images/:place_id', to: 'posts#current_location_posts'
+  get '/todays-top-posts', to: 'posts#todays_top'
+
   get '/dummy-route', to: 'posts#index'
 
   get '/user/:id', to: 'users#show'

@@ -17,6 +17,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  validates :email, uniqueness: true, presence: true
+  validates :username, uniqueness: true, presence: true
+
   def avatar_url
     Rails.application.routes.url_helpers.url_for(avatar) if avatar.attached?
   end

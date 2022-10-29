@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   delete '/unlike-image/:post_id', to: 'post_likes#destroy'
   delete '/unlike-comment/:comment_id', to: 'comment_likes#destory'
 
+  put '/edit-account/:id', to: 'users#update'
+
 
 
   get '*path',

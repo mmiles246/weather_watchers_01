@@ -20,7 +20,10 @@ function Home ({userLocationKey, userLocationName, userState, currentConditions,
                         locate={locate} 
                         iconNum={iconNum}
                         />
-                        {/* <HomePageFeed 
+
+                        {placeId ? 
+                        
+                        <HomePageFeed 
                         userLocationName={userLocationName} 
                         currentConditions={currentConditions}
                         placeId={placeId}
@@ -32,8 +35,8 @@ function Home ({userLocationKey, userLocationName, userState, currentConditions,
                         imageClick={imageClick} 
                         isMounted={isMounted}
                         currentLocationInfo={currentLocationInfo}
-                        /> */}
-
+                        /> 
+                        :
                         <TodaysHomePageFeed 
                         imageClick={imageClick}
                         clickedImageUrl={clickedImageUrl}
@@ -43,6 +46,9 @@ function Home ({userLocationKey, userLocationName, userState, currentConditions,
                         isMounted={isMounted}
                         imageObjsMapper={imageObjsMapper}
                          />
+                        }
+
+                        
                 </div>
             </div>
         </>

@@ -8,6 +8,8 @@ function UserAccountPage ({currentUser, clickedImageId, setClickedImageId, click
         <div className='feed-container'>
             <div className='feed-header'>
                 <AccountPageBanner  currentUser={currentUser} userInfo={currentUser} numOfPosts={numOfPosts} diffInDate={diffInDate} />
+            </div>
+            <div className='image-feed'>
                 <CurrentUserFeed currentUser={currentUser} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} clickedImageUrl={clickedImageUrl} setClickedImageUrl={setClickedImageUrl} clickedImage={clickedImage} setClickedImage={setClickedImage} imageClick={imageClick} isMounted={isMounted} imageObjs={imageObjs} imageObjsMapper={imageObjsMapper} />
             </div>
         </div>

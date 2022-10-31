@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
-function UserBanner ({userWhoPosted, userWhoPostedAvatar, currentUser}) {
+function UserBanner ({userWhoPosted, userWhoPostedAvatar, currentUser, lastPostedFrom, setLastPostedFrom}) {
     return(
         <>
         <div className='user-banner-container'>
             <div className='user-banner'>
-                {userWhoPosted.id !== currentUser.id ? (<Link to={`/user/${userWhoPosted.id}`} state={userWhoPosted}>
+                {userWhoPosted.id !== currentUser.id ? (<Link to={`/user/${userWhoPosted.id}`} state={userWhoPosted} >
                 <div className='user-banner-avatar'>
                         {userWhoPostedAvatar ? <img src={userWhoPostedAvatar}/> : <i class="fa-solid fa-user"></i> }
                 </div>

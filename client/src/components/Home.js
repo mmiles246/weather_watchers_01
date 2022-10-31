@@ -5,8 +5,6 @@ import TodaysHomePageFeed from "./TodaysHomePageFeed";
 
 
 function Home ({userLocationKey, userLocationName, userState, currentConditions, triggerLocation, locate, iconNum, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, imageClick, isMounted, currentLocationInfo, imageObjsMapper}) {
-
-    console.log(placeId)
     return (
         <>
             <div className="home--primary">

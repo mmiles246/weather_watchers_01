@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted, imageObjs, imageObjsMapper}) {
+function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, clickedImage, setClickedImage, imageClick, isMounted, imageObjs, imageObjsMapper, currentUserPosts}) {
     // const [imageObjs, setImageObjs] = useState([])
     // const [clickedImageUrl, setClickedImageUrl] = useState()
     // const [clickedImageId, setClickedImageId] = useState()
@@ -90,7 +90,7 @@ function CurrentUserFeed ({currentUser, clickedImageId, setClickedImageId, click
             </Modal> */}
             <div className='image-feed'>
                 <br></br>
-                {imageObjs.map(imageObjsMapper)}
+                {currentUserPosts.map(imageObjsMapper)}
             </div>
         </div>
         </>

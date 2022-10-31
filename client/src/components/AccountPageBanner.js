@@ -3,9 +3,10 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react'
 import EditAccountDropMenu from './user-account-components/EditAccountDropMenu';
 
-function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate, dateOfLastPost, calculateDays}) {
+function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+
 
     function onSubmit (e) {
         e.preventDefault()
@@ -23,6 +24,7 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
         })
     }
 
+    console.log(lastPostedFrom)
     return(
         <>
         <div className="banner-container">
@@ -31,7 +33,7 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
                 {(currentUser ? <img className='current-user-blank-avatar' src={currentUser.avatar_url} onClick={() => setShow(true)} /> : <img className='current-user-blank-avatar' src={userAvatar} />)}
                 <h3>{userInfo ? userInfo.username : ''}</h3>
             </div>
-            <Modal
+            {/* <Modal
                 size="sm"
                 show={show}
                 onHide={() => setShow(false)}
@@ -54,7 +56,7 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
                     </form>
                 </Modal.Body>
                 
-            </Modal>
+            </Modal> */}
             <div className="account-info">
                 <div id='num-posts'>
                     <h3>Posts: </h3>
@@ -62,11 +64,13 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
                 </div>
                 <br></br>
                 <div id='last-posted'>
-                    <h3>Last Posted: </h3>
-                    <h3>{(diffInDate === 0) ? 'today' : (diffInDate + ' days ago')} </h3>
+                    {/* <h3>Last Posted: </h3>
+                    <h3>{(diffInDate === 0) ? 'today' : (diffInDate + ' days ago')} </h3> */}
+                    <h3>LastPosted From:</h3>
+                    <h3>{lastPostedFrom ? lastPostedFrom.location.toString() : ''}</h3>
                 </div>
                 <div id='account-drop-menu'>
-                    <EditAccountDropMenu currentUser={currentUser}/>
+                    {/* <EditAccountDropMenu currentUser={currentUser}/> */}
                 </div>
             </div>
             

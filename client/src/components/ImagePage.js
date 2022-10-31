@@ -7,7 +7,7 @@ import CommentCard from "./CommentCard";
 
 
 
-function ImagePage ({currentUser}) {
+function ImagePage ({currentUser, lastPostedFrom, setLastPostedFrom}) {
     const [imageObject, setImageObject]=useState({})
     const [userWhoPosted, setUserWhoPosted] = useState('')
     const [userWhoPostedAvatar, setUserWhoPostedAvatar] = useState('')
@@ -90,7 +90,7 @@ function ImagePage ({currentUser}) {
             <div className='image-page'>
                 
                 <div className='image-page-container'>
-                    <UserBanner userWhoPosted={userWhoPosted} userWhoPostedAvatar={userWhoPostedAvatar} currentUser={currentUser} />
+                    <UserBanner userWhoPosted={userWhoPosted} userWhoPostedAvatar={userWhoPostedAvatar} currentUser={currentUser} lastPostedFrom={lastPostedFrom} setLastPostedFrom={setLastPostedFrom} />
                     <img className='image-page-image' src={imageObject.image_url} id={imageObject.id} onClick={!usersWhoLiked.includes(currentUser.id) ? clickToLike : clickToUnlike} />
                     
                 </div>

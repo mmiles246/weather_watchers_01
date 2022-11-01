@@ -23,6 +23,7 @@ function App() {
   const [placeId, setPlaceId] = useState('')
   const [storedLocations, setStoredLocations] = useState([])
   const [currentLocationInfo, setCurrentLocationInfo]=useState([])
+  const [triggerGetLocImages, setTriggerGetLocImages] = useState(false)
   // const [autocompleteAddress, setAutocompleteAddress] = useState('')
   const [todaysTopImages, setTodaysTopImages] = useState([])
 

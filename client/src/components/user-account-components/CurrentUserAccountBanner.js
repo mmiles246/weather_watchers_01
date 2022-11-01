@@ -1,10 +1,12 @@
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import EditAccountDropMenu from './EditAccountDropMenu';
+import Geocode from "react-geocode"
 import { useNavigate } from 'react-router-dom'
 
-function CurrentUserAccountBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom, lastPostedFromName, setPlaceId, setAutoCompleteAddress}) {
+function CurrentUserAccountBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom, lastPostedFromName, setPlaceId, setAutoCompleteAddress, setLat, setLng}) {
+    const [userPostLocation, setUserPostLocation] = useState (lastPostedFromName)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
@@ -13,7 +15,18 @@ function CurrentUserAccountBanner ({currentUser, userAvatar, userInfo, numOfPost
 
     let navigate= useNavigate()
 
-    
+    useEffect(() => {
+        Geocode.fromAddress(lastPostedFromName)
+        .then(res => {
+            setLat(res.results[0].geometry.location.lat)
+            setLng(res.results[0].geometry.location.lng)
+        })
+    } ,[locationClick])
+
+    function locationClick () {
+        setPlaceId(lastPostedFrom.place_id);
+        navigate('/');
+    }
 
     function onSubmit (e) { 
         e.preventDefault()
@@ -73,7 +86,7 @@ function CurrentUserAccountBanner ({currentUser, userAvatar, userInfo, numOfPost
                     {/* <h3>Last Posted: </h3>
                     <h3>{(diffInDate === 0) ? 'today' : (diffInDate + ' days ago')} </h3> */}
                     <h3>Last Posted From:</h3>
-                    <h3 onClick={() => {setPlaceId(lastPostedFrom.place_id); navigate('/')}}>{lastPostedFromName}</h3>
+                    <h3 onClick={locationClick}>{lastPostedFromName}</h3>
                 </div>
                 <div id='account-drop-menu'>
                     <EditAccountDropMenu currentUser={currentUser}/>

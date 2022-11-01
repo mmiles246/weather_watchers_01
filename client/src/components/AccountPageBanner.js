@@ -1,11 +1,15 @@
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate  } from 'react-router-dom';
 import EditAccountDropMenu from './user-account-components/EditAccountDropMenu';
+import Geocode from "react-geocode"
 
-function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom, lastPostedFromName}) {
+function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom, lastPostedFromName, setPlaceId, setLat, setLng}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+
+    let navigate = useNavigate()
 
 
     function onSubmit (e) {
@@ -14,6 +18,19 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
         data.append('avatar', e.target.profileimage.files[0])
 
         submitData(data)
+    }
+
+    useEffect(() => {
+        Geocode.fromAddress(lastPostedFromName)
+        .then(res => {
+            setLat(res.results[0].geometry.location.lat)
+            setLng(res.results[0].geometry.location.lng)
+        })
+    } ,[bannerLocClick])
+
+    function bannerLocClick () {
+        setPlaceId(lastPostedFrom.place_id);
+        navigate('/');
     }
 
     function submitData(data) {
@@ -33,30 +50,6 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
                 {(currentUser ? <img className='current-user-blank-avatar' src={currentUser.avatar_url} onClick={() => setShow(true)} /> : <img className='current-user-blank-avatar' src={userAvatar} />)}
                 <h3>{userInfo ? userInfo.username : ''}</h3>
             </div>
-            {/* <Modal
-                size="sm"
-                show={show}
-                onHide={() => setShow(false)}
-                aria-labelledby="example-modal-sizes-title-sm"
-            >
-                <Modal.Header closeButton>
-                {!currentUser.avatar_url ? <Modal.Title id="example-modal-sizes-title-sm">Add a profile image?</Modal.Title> : <Modal.Title id="example-modal-sizes-title-sm">Update profile image?</Modal.Title> }
-                </Modal.Header>
-                <Modal.Body>
-                    <form onSubmit={onSubmit}>
-                        <input 
-                        type='file'
-                        accept='image/*'
-                        name='profileimage'
-                        id='profileimage'
-                        />
-                        <Button variant="primary" type='submit'>
-                            Save Changes
-                        </Button>
-                    </form>
-                </Modal.Body>
-                
-            </Modal> */}
             <div className="account-info">
                 <div id='num-posts'>
                     <h3>Posts: </h3>
@@ -67,7 +60,7 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
                     {/* <h3>Last Posted: </h3>
                     <h3>{(diffInDate === 0) ? 'today' : (diffInDate + ' days ago')} </h3> */}
                     <h3>LastPosted From:</h3>
-                    <h3>{lastPostedFromName}</h3>
+                    <h3 onClick={bannerLocClick}>{lastPostedFromName}</h3>
                 </div>
                 <div id='account-drop-menu'>
                     {/* <EditAccountDropMenu currentUser={currentUser}/> */}

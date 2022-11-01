@@ -5,6 +5,7 @@ import {BrowserRouter, useOutletContext, useNavigate } from 'react-router-dom'
 import AuthenticatedApp from './AuthenticatedApp';
 import UnauthenticatedApp from './UnauthenticateApp';
 import {useLoadScript} from '@react-google-maps/api'
+import Geocode from "react-geocode"
 
 function App() {
   const [currentUser, setCurrentUser] = useState()    
@@ -22,6 +23,7 @@ function App() {
   const [placeId, setPlaceId] = useState('')
   const [storedLocations, setStoredLocations] = useState([])
   const [currentLocationInfo, setCurrentLocationInfo]=useState([])
+  // const [autocompleteAddress, setAutocompleteAddress] = useState('')
   const [todaysTopImages, setTodaysTopImages] = useState([])
 
   const [clickedImageUrl, setClickedImageUrl] = useState()
@@ -116,6 +118,14 @@ function App() {
         })
     }, [placeId])
 
+  //   useEffect(() => {
+  //     Geocode.fromAddress(autocompleteAddress)
+  //     .then(res => {
+  //         setLat(res.results[0].geometry.location.lat)
+  //         setLng(res.results[0].geometry.location.lng)
+  //     })
+  // } ,[autocompleteAddress, placeId])
+
     function imageClick (e) {
       if (currentUser) {
           setClickedImageId(parseInt(e.target.getAttribute('imageId')))
@@ -174,6 +184,8 @@ function App() {
       dateOfLastPost={dateOfLastPost}
       setDateOfLastPost={setDateOfLastPost}
       imageObjsMapper={imageObjsMapper}
+      // autocompleteAddress={autocompleteAddress}
+      // setAutocompleteAddress={setAutocompleteAddress}
        /> 
       : 
       <UnauthenticatedApp

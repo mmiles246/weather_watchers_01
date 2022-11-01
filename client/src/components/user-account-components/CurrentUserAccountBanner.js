@@ -2,15 +2,18 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react'
 import EditAccountDropMenu from './EditAccountDropMenu';
+import { useNavigate } from 'react-router-dom'
 
-function CurrentUserAccountBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom}) {
+function CurrentUserAccountBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPost, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom, lastPostedFromName, setPlaceId, setAutoCompleteAddress}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
+    console.log(lastPostedFrom)
+
+
+    let navigate= useNavigate()
 
     
-
-     lastPostedFrom ? (let nameOfLastPostLocation = lastPostedFrom.location.name.slice(0, -5)) : ''
 
     function onSubmit (e) { 
         e.preventDefault()
@@ -70,7 +73,7 @@ function CurrentUserAccountBanner ({currentUser, userAvatar, userInfo, numOfPost
                     {/* <h3>Last Posted: </h3>
                     <h3>{(diffInDate === 0) ? 'today' : (diffInDate + ' days ago')} </h3> */}
                     <h3>Last Posted From:</h3>
-                    <h3>{lastPostedFrom ? nameOfLastPostLocation.toString() : ''}</h3>
+                    <h3 onClick={() => {setPlaceId(lastPostedFrom.place_id); navigate('/')}}>{lastPostedFromName}</h3>
                 </div>
                 <div id='account-drop-menu'>
                     <EditAccountDropMenu currentUser={currentUser}/>

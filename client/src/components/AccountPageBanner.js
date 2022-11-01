@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react'
 import EditAccountDropMenu from './user-account-components/EditAccountDropMenu';
 
-function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom}) {
+function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, lastPosted, diffInDate, dateOfLastPost, calculateDays, lastPostedFrom, lastPostedFromName}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
@@ -67,7 +67,7 @@ function AccountPageBanner ({currentUser, userAvatar, userInfo, numOfPosts, last
                     {/* <h3>Last Posted: </h3>
                     <h3>{(diffInDate === 0) ? 'today' : (diffInDate + ' days ago')} </h3> */}
                     <h3>LastPosted From:</h3>
-                    <h3>{lastPostedFrom ? lastPostedFrom.location.toString() : ''}</h3>
+                    <h3>{lastPostedFromName}</h3>
                 </div>
                 <div id='account-drop-menu'>
                     {/* <EditAccountDropMenu currentUser={currentUser}/> */}

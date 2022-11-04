@@ -1,27 +1,37 @@
 import { Data } from '@react-google-maps/api';
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function TodaysHomePageFeed ({imageClick, clickedImageUrl, setClickedImageUrl, clickedImageID, setClickedImageId, isMounted, imageObjsMapper}) {
+function TodaysHomePageFeed ({imageClick, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, isMounted, imageObjsMapper}) {
     const [todaysTopPosts, setTodaysTopPosts] = useState([])
 
-    let today = new Date()
+    let navigate = useNavigate()
+    // let today = new Date()
 
-    function padTo2Digits(num) {
-        return num.toString().padStart(2, '0')
-    }
+    // function padTo2Digits(num) {
+    //     return num.toString().padStart(2, '0')
+    // }
 
-    function formatDate (date) {
+    // function formatDate (date) {
 
-        return [
-            date.getFullYear(),
-            padTo2Digits(date.getMonth() + 1),
-            padTo2Digits(date.getDate()),
-        ].join('-')
+    //     return [
+    //         date.getFullYear(),
+    //         padTo2Digits(date.getMonth() + 1),
+    //         padTo2Digits(date.getDate()),
+    //     ].join('-')
 
-    }
-    let todayFormatted = formatDate(today)
+    // }
+    // let todayFormatted = formatDate(today)
     
-    console.log(todayFormatted)
+    // console.log(todayFormatted)
+
+    // function todaysImageMapper (obj) {
+    //     return(
+            
+    //     <div className='image-container'>
+    //         <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
+    //     </div>)
+    // }
 
     useEffect(() => {
         fetch(`/todays-top-posts`)
@@ -31,6 +41,17 @@ function TodaysHomePageFeed ({imageClick, clickedImageUrl, setClickedImageUrl, c
             setTodaysTopPosts(data)
         })
     }, [])
+
+    useEffect(() => {
+        if (isMounted.current) {
+            navigate(`/image/${clickedImageId}`, {state: clickedImageId})
+            isMounted.current = false
+            setClickedImageId()
+        } 
+        // else {
+        //     isMounted.current = false
+        // }
+    }, [imageClick])
 
     return(
     <>

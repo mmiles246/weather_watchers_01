@@ -3,13 +3,9 @@ import {useNavigate} from 'react-router-dom'
 
 
 function HomePageFeed ({userLocationName, placeId, currentUser, clickedImageId, setClickedImageId, clickedImageUrl, setClickedImageUrl, imageClick, isMounted, currentLocationInfo}) {
-    // const [currentLocationInfo, setCurrentLocationInfo]=useState([])
-
-    // const isMounted = useRef(false)
 
     let navigate = useNavigate()
 
-    // console.log(currentLocationInfo)
 
     useEffect(() => {
         if (isMounted.current) {

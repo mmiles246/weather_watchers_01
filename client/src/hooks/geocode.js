@@ -4,6 +4,7 @@ import Geocode from "react-geocode"
 function geocode (address) {
     const [hookLatLng, setHookLatLng] = useState({lat: 0, lng: 0})
     
+    const latAndLng = hookLatLng
 
     useEffect(() => {
         Geocode.fromAddress(address)
@@ -13,5 +14,5 @@ function geocode (address) {
             })
     }, [address])
 
-    return hookLatLng; 
+    return latAndLng; 
 }

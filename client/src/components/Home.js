@@ -39,7 +39,7 @@ function Home ({userLocationKey, userLocationName, userState, currentConditions,
                         imageClick={imageClick}
                         clickedImageUrl={clickedImageUrl}
                         setClickedImageUrl={setClickedImageUrl}
-                        clickedImageId={clickedImageId}
+                        clickedImageId={clickedImageId} 
                         setClickedImageId={setClickedImageId}
                         isMounted={isMounted}
                         imageObjsMapper={imageObjsMapper}

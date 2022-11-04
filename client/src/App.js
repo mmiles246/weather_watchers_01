@@ -131,6 +131,7 @@ function App() {
       if (currentUser) {
           setClickedImageId(parseInt(e.target.getAttribute('imageId')))
           setClickedImageUrl(e.target.getAttribute('src'))
+          console.log(clickedImageId)
           // setClickedImage(imageObjs.find(obj => obj.id === parseInt(e.target.getAttribute('imageId'))))
           isMounted.current = true
       } else {
@@ -141,7 +142,7 @@ function App() {
   function imageObjsMapper (obj) {
     return(
     <div className='image-container'>
-        <img className='current-user-feed-image' src={obj.image_url} imageId={obj.id} postedAt={obj.created_at} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
+        <img className='current-user-feed-image' src={obj.image_url} id={obj.id} imageId={obj.id} postedAt={obj.created_at} imageObj={{obj}} onClick={(e) => {imageClick(e)}} />
     </div>)
 }
 

@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get '/posts_show', to: 'posts#show'
   get '/my_posts', to: 'posts#current_user_posts'
   get '/users_posts/:id', to: 'posts#users_posts'
+  get '/popular-posts', to: 'posts#popular_posts'
   get '/locations', to: 'locations#place_id'
   get '/locations-placeids', to: 'locations#place_id'
   # get '/locations-images', to: 'locations#images'

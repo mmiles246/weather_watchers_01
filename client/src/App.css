@@ -51,7 +51,7 @@
   transition: 350ms;
   background-color: #F1F2EE;
   z-index: 1;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .nav-text{
@@ -340,7 +340,7 @@
 /* ////////////////////////////////////////////////////////*/
 
 .feed-container {
-  height: 100vh;
+  height: 100%;
   /* background-color: #EFF9F0; */
   /* background-color: #698F3F; */
   background-color: #CFEBDF;
@@ -382,13 +382,13 @@
 /* ////////////////////////////////////////////////////////*/
 
 .home-feed-container {
-  height: 100vh;
+  height: 100%;
   /* background-color: #EFF9F0; */
   /* background-color: #698F3F; */
   background-color: #CFEBDF;
   width: 100%;
   text-align: center;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .home-feed-header {

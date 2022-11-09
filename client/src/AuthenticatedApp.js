@@ -10,6 +10,7 @@ import PostModal from "./components/PostModal";
 import UserFeedPage from "./components/UserFeedPage";
 import ImagePage from "./components/ImagePage";
 import TodaysHomePageFeed from "./components/TodaysHomePageFeed";
+import PopularPostsFeed from "./components/PopularPostsFeed";
 
 function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLocationName, userState, setLat, setLng, currentConditions, triggerLocation, locate, iconNum, placeId, setPlaceId, storedLocations, isMounted, currentLocationInfo, setCurrentLocationInfo, clickedImageUrl, setClickedImageUrl, clickedImageId, setClickedImageId, imageClick, clickEffect, dateOfLastPost, setDateOfLastPost, imageObjsMapper, autoCompleteAddress, setAutoCompleteAddress}) {
     // const [clickedImageUrl, setClickedImageUrl] = useState()
@@ -100,9 +101,9 @@ function AuthenticatedApp ({currentUser, setCurrentUser, userLocationKey, userLo
                 } />
                 <Route path='signup' element={<Signup />} />
                 <Route path='login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-                <Route path='feed' element={<FeedPage />}>
-                    <Route path='popular' element={<FeedPage/>} />
-                </Route>
+                {/* <Route path='feed' element={<FeedPage />}> */}
+                <Route path='popular' element={<PopularPostsFeed imageObjsMapper={imageObjsMapper} imageClick={imageClick} isMounted={isMounted} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} />} />
+                {/* </Route> */}
                 <Route path='my-account' element={<UserAccountPage currentUser={currentUser} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} clickedImageUrl={clickedImageUrl} setClickedImageUrl={setClickedImageUrl} imageClick={imageClick} isMounted={isMounted} imageObjs={imageObjs} imageObjsMapper={imageObjsMapper} userInfo={userInfo} setUserInfo={setUserInfo} dateOfLastPost={dateOfLastPost} setDateOfLastPost={setDateOfLastPost} numOfPosts={numOfPosts} diffInDate={diffInDate} lastPostedFrom={lastPostedFrom} setLastPostedFrom={setLastPostedFrom} lastPostedFromName={lastPostedFromName} setLastPostedFromName={setLastPostedFromName} setPlaceId={setPlaceId} setAutoCompleteAddress={setAutoCompleteAddress} setLat={setLat} setLng={setLng}  />}/>
                 <Route path='user/:id' element={<UserFeedPage imageObjsMapper={imageObjsMapper} isMounted={isMounted} imageClick={imageClick} clickedImageId={clickedImageId} setClickedImageId={setClickedImageId} userInfo={userInfo} setUserInfo={setUserInfo} dateOfLastPost={dateOfLastPost} setDateOfLastPost={setDateOfLastPost} numOfPosts={numOfPosts} setNumofPosts={setNumofPosts} calculateDays={calculateDays} lastPostedFrom={lastPostedFrom} setLastPostedFrom={setLastPostedFrom} lastPostedFromName={lastPostedFromName} setLastPostedFromName={setLastPostedFromName} setPlaceId={setPlaceId} setLat={setLat} setLng={setLng} />} />
                 <Route path='image/:id' element={<ImagePage currentUser={currentUser} lastPostedFrom={lastPostedFrom} setLastPostedFrom={setLastPostedFrom}  />} />

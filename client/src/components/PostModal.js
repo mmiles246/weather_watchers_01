@@ -72,8 +72,8 @@ function PostModal () {
                 controlId="exampleForm.ControlTextarea1"
                 >
                 <Form.Label>Caption</Form.Label>
-                <input type='text' name='caption' id='caption' />
-                <Form.Control as="textarea"  rows={3} />
+                <textarea type='textbox' rows='3' cols='50' name='caption' id='caption' />
+                {/* <Form.Control as="textarea"  rows={3} /> */}
                 </Form.Group>
                 <Button variant="primary" type='submit'>
                     Save Changes

@@ -65,6 +65,15 @@ class PostsController < ApplicationController
         render json: ttp_urls
     end
 
+    def popular_posts 
+        this_weeks_pop_posts=Post.where("DATE(created_at) >= DATE(?)", 7.days.ago)
+        pop_posts_urls=Array.new
+        this_weeks_pop_posts.each do |post|
+            pop_posts_urls.push(PostSerializer.new(post).serializable_hash[:data][:attributes])
+        end
+        render json: pop_posts_urls
+    end
+
 
     def destroy
         @post.destroy

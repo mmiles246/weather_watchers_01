@@ -33,7 +33,7 @@ function SearchBar ({placeholder, setLat, setLng, placeId, setPlaceId, storedLoc
 
     function checkForSearchedLocation (placeId, storedLocations) {
         if(!storedLocations.includes(placeId)) {
-            console.log(false)
+            // console.log(false)
             fetch('/add_location', {
                 method: 'POST',
                 headers: {

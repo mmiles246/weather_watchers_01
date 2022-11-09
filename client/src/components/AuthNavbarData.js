@@ -4,7 +4,7 @@
 export const AuthNavbarData = [
     {
         label: 'Popular Posts',
-        path: '/feed/popular',
+        path: '/popular',
         state: '',
         icon: <i class="fa-solid fa-clock"></i>,
         cName: 'nav-text'

@@ -77,7 +77,7 @@ class PostsController < ApplicationController
       end
 
     def post_params
-        params.permit(:id, :user_id, :location_id, :image, :image_url, :post_likes, :user)
+        params.permit(:id, :user_id, :location_id, :image, :image_url, :caption, :post_likes, :user)
     end
     
 end

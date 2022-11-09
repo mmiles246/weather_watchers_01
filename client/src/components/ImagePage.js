@@ -9,6 +9,7 @@ import CommentCard from "./CommentCard";
 
 function ImagePage ({currentUser, lastPostedFrom, setLastPostedFrom}) {
     const [imageObject, setImageObject]=useState({})
+    const [caption, setCaption] = useState('')
     const [userWhoPosted, setUserWhoPosted] = useState('')
     const [userWhoPostedAvatar, setUserWhoPostedAvatar] = useState('')
     const [usersWhoLiked, setUsersWhoLiked] = useState([])
@@ -28,9 +29,11 @@ function ImagePage ({currentUser, lastPostedFrom, setLastPostedFrom}) {
         fetch(`/clicked_image/${imageId}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             setUserWhoPosted(data.user)
             setUsersWhoLiked(data.users_who_liked)
             setImageObject(data)
+            setCaption(data.caption)
             // setComments(data.comments)
             fetch(`/user-who-posted/${data.user.id}`)
             .then(res => res.json())
@@ -98,19 +101,28 @@ function ImagePage ({currentUser, lastPostedFrom, setLastPostedFrom}) {
             </div>
             <div className="comment-container">
                 <div className="likes-banner">
-                    {usersWhoLiked.includes(currentUser.id) ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
-                    <p>{numLikes} likes</p>
-                    <div className="comment-icon" >
-                        {/* <FontAwesomeIcon icon="fa-comment" /> */}
-                        {/* <i class="fa-regular fa-comment" ></i> */}
+                    <div onClick={!usersWhoLiked.includes(currentUser.id) ? clickToLike : clickToUnlike}>
+                        {usersWhoLiked.includes(currentUser.id) ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                     </div>
+                    <p>{numLikes} likes</p>
+                    {clickToComment ? 
+                    <CommentForm currentUser={currentUser} imageId={imageId} setNewComment={setNewComment} setClickToComment={setClickToComment} />
+                    :
+                    <div className="comment-icon" onClick={() => setClickToComment(true)} >
+                        {/* <FontAwesomeIcon icon="fa-comment" /> */}
+                        <i class="fa-regular fa-comment" ></i>
+                    </div>
+                    }
+                </div>
+                <div className='caption-container'>
+                    {caption ? caption : ''}
                 </div>
                 <div className="comment-board">
-                        {clickToComment ? <CommentForm currentUser={currentUser} imageId={imageId} setNewComment={setNewComment} /> : <></> }
+                        
                         {comments ? 
                         comments.map(commentMapper)
                         :
-                        <></>}
+                        <></>} 
                 </div>
             </div>
         </div>

@@ -9,7 +9,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 function PostModal () {
     const location = useLocation()
-    console.log(location.state)
     const currentUser = location.state
 
 
@@ -18,7 +17,6 @@ function PostModal () {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    console.log(currentUser)
 
     function handleSubmit (e) {
         e.preventDefault()
@@ -30,6 +28,7 @@ function PostModal () {
 
         data.append('user_id', parseInt(currentUser.id))
         data.append('location_id', parseInt(currentUser.location_id))
+        data.append('caption', e.target.caption.value)
 
         data.append('image', e.target.image.files[0])
 
@@ -72,8 +71,9 @@ function PostModal () {
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
                 >
-                <Form.Label>Example textarea</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Label>Caption</Form.Label>
+                <input type='text' name='caption' id='caption' />
+                <Form.Control as="textarea"  rows={3} />
                 </Form.Group>
                 <Button variant="primary" type='submit'>
                     Save Changes
